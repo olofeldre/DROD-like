@@ -2,7 +2,8 @@
 
 ## What is the project about?
     
-    Our project is a top down rougelike, turn based, stealth videogame set in a modern era. The game will be 2D.
+    Our project is a top down rougelike, turn based, stealth videogame set in a modern era. 
+    The game will be 2D.
     
 ## How do i install and use the project?
   
