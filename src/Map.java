@@ -18,9 +18,8 @@ public class Map {
         this.width = width;
         this.height = height;
         tileMatrix = new Tile[width][height];
-        /**
-         * Add empty tile elements to the entire tile matrix.
-         */
+
+        // Add empty tile elements to the entire tile matrix.
         for (int i = 0; i < width; i++){
             for(int j = 0; j < height; j ++){
                 tileMatrix[i][j] = new Tile(false);
@@ -39,6 +38,7 @@ public class Map {
         if(!isValidTile(x,y)) {
             throw new IndexOutOfBoundsException("Tile is out of bounds.");
         }
+        // Convert the coordinates to indeces in the tile matrix.
         int[] index = convertToIndex(x, y);
         return tileMatrix[index[0]][index[1]];
     }
