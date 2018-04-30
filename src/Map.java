@@ -67,13 +67,39 @@ public class Map {
      * @return
      */
     private boolean isValidTile(int x, int y) {
-        if(x >= -width/2 && x < Math.ceil(width/2f)) {
-            if(y >= -height/2 && y < Math.ceil(height/2f)) {
-                return true;
+        int[] indices = convertToIndex(x, y);
 
-            }
+        if(!isValidXIndex(indices[0]) || !isValidYIndex(indices[1])) {
+            return false;
         }
-        return  false;
+
+        return true;
+    }
+
+    /**
+     * Return whether the given index exists in the matrix.
+     * @param xIndex
+     * @return
+     */
+    private boolean isValidXIndex(int xIndex) {
+        if(xIndex >= tileMatrix[0].length || xIndex < 0) {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Return whether the given index exists in the matrix.
+     * @param yIndex
+     * @return
+     */
+    private boolean isValidYIndex(int yIndex) {
+        if(yIndex >= tileMatrix.length || yIndex < 0) {
+            return false;
+        }
+
+        return true;
     }
 
 
