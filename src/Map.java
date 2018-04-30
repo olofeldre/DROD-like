@@ -60,6 +60,12 @@ public class Map {
         return indices;
     }
 
+    /**
+     * Return whether the given coordinates correspond to a valid tile in the matrix.
+     * @param x
+     * @param y
+     * @return
+     */
     private boolean isValidTile(int x, int y) {
         if(x >= -width/2 && x < Math.ceil(width/2f)) {
             if(y >= -height/2 && y < Math.ceil(height/2f)) {
