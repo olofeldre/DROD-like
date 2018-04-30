@@ -1,12 +1,26 @@
+/**
+ * Map: This class should store information about the map and
+ * get information stored in specific tiles.
+ */
+
 public class Map {
     private int width;
     private int height;
     private Tile [][] tileMatrix;
 
+    /**
+     * Construct the map by initializing the tile matrix
+     * that stores all information on the map.
+     * @param width
+     * @param height
+     */
     public Map(int width, int height) {
         this.width = width;
         this.height = height;
         tileMatrix = new Tile[width][height];
+        /**
+         * Add empty tile elements to the entire tile matrix.
+         */
         for (int i = 0; i < width; i++){
             for(int j = 0; j < height; j ++){
                 tileMatrix[i][j] = new Tile(false);
