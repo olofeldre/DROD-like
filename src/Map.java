@@ -31,7 +31,7 @@ public class Map {
      * Return the the tile object located at (x, y) in the tile matrix.
      * @param x
      * @param y
-     * @return
+     * @return Tile at coordinates
      * @throws IndexOutOfBoundsException
      */
     public Tile getTile(int x, int y) throws IndexOutOfBoundsException {
@@ -43,6 +43,14 @@ public class Map {
         return tileMatrix[index[0]][index[1]];
     }
 
+    /**
+     * Convert the given coordinates to indeces for the tile matrix.
+     * (-width/2, -height/2) is the top right corner of the matrix.
+     * This corresponds to [0][0] in the two-dimensional-array-
+     * @param x
+     * @param y
+     * @return
+     */
     private int[] convertToIndex(int x, int y){
         int[] indices = new int[2];
         int newX = x + width/2;
