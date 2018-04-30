@@ -9,7 +9,7 @@ public class Map {
     private Tile [][] tileMatrix;
 
     /**
-     * Construct the map by initializing the tile matrix
+     * Construct the map by initializing the tile matrix of size width * height
      * that stores all information on the map.
      * @param width
      * @param height
@@ -28,6 +28,13 @@ public class Map {
         }
     }
 
+    /**
+     * Return
+     * @param x
+     * @param y
+     * @return
+     * @throws IndexOutOfBoundsException
+     */
     public Tile getTile(int x, int y) throws IndexOutOfBoundsException {
         if(!isValidTile(x,y)) {
             throw new IndexOutOfBoundsException("Tile is out of bounds.");
