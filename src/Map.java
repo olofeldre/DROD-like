@@ -29,7 +29,7 @@ public class Map {
     }
 
     /**
-     * Return
+     * Return the the tile object located at (x, y) in the tile matrix.
      * @param x
      * @param y
      * @return
