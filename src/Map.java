@@ -69,6 +69,7 @@ public class Map {
     private boolean isValidTile(int x, int y) {
         int[] indices = convertToIndex(x, y);
 
+        // If either index is invalid, the coordinates must be invalid.
         if(!isValidXIndex(indices[0]) || !isValidYIndex(indices[1])) {
             return false;
         }
