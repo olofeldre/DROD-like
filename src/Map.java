@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 86a304f09fe0ef61c0710fb33e7fe464b827d175
 /**
  * Map: This class should store information about the map and
  * get information stored in specific tiles.
@@ -13,8 +16,13 @@ public class Map {
     /**
      * Construct the map by initializing the tile matrix of size width * height
      * that stores all information on the map.
+<<<<<<< HEAD
      * @param width width of map to be constructed
      * @param height ditto, but for height
+=======
+     * @param width
+     * @param height
+>>>>>>> 86a304f09fe0ef61c0710fb33e7fe464b827d175
      */
     public Map(int width, int height) {
         this.width = width;
@@ -31,11 +39,18 @@ public class Map {
 
     /**
      * Return the the tile object located at (x, y) in the tile matrix.
+<<<<<<< HEAD
      * @param x x-position of tile in matrix
 	 *          origin of matrix is in the centre of the map.
      * @param y y-position of tile in the matrix.
      * @return Tile at coordinates
      * @throws IndexOutOfBoundsException if index does lies outside the map.
+=======
+     * @param x
+     * @param y
+     * @return Tile at coordinates
+     * @throws IndexOutOfBoundsException
+>>>>>>> 86a304f09fe0ef61c0710fb33e7fe464b827d175
      */
     public Tile getTile(int x, int y) throws IndexOutOfBoundsException {
         if(!isValidTile(x,y)) {
@@ -75,6 +90,7 @@ public class Map {
         // If either index is invalid, the coordinates must be invalid.
         if(!isValidXIndex(indices[0]) || !isValidYIndex(indices[1])) {
             return false;
+<<<<<<< HEAD
         }
 
         return true;
@@ -91,6 +107,37 @@ public class Map {
         }
 
         return true;
+=======
+        }
+
+        return true;
+    }
+
+    /**
+     * Return whether the given index exists in the matrix.
+     * @param xIndex
+     * @return
+     */
+    private boolean isValidXIndex(int xIndex) {
+        if(xIndex >= tileMatrix[0].length || xIndex < 0) {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Return whether the given index exists in the matrix.
+     * @param yIndex
+     * @return
+     */
+    private boolean isValidYIndex(int yIndex) {
+        if(yIndex >= tileMatrix.length || yIndex < 0) {
+            return false;
+        }
+
+        return true;
+>>>>>>> 86a304f09fe0ef61c0710fb33e7fe464b827d175
     }
 
     /**
