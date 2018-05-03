@@ -9,8 +9,14 @@ public class Tile {
         this.wall = wall;
     }
 
-    public String toString() {
-        return null;
+    public String toString()
+	{
+        if (wall == true)
+		{
+			return "@";
+		}
+		else
+			return "-";
     }
 
     public boolean isWall() {

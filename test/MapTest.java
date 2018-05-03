@@ -1,6 +1,7 @@
 import org.junit.Before;
 import org.junit.Test;
 
+
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.junit.Assert.*;
 
@@ -55,8 +56,30 @@ public class MapTest {
     }
 
     @Test(expected=IndexOutOfBoundsException.class)
-    public void getTileOutsideOddMapShouldThrowException() {
+    public void getTileOutsideOddMapShouldThrowException()
+	{
         Map map = new Map(5, 5);
         map.getTile(3, 3);
     }
+	@Test
+    public void toStringWorksOnEmptyMaps()
+	{
+		//Arrange
+		String targetString;
+		StringBuilder stringBuilder = new StringBuilder();
+		for (int i = 0; i < 4; i ++)
+		{
+			stringBuilder.append("-----\n");
+		}
+		stringBuilder.append("-----");
+		targetString = stringBuilder.toString();
+
+		Map emptyMap = new Map(5, 5);
+
+		//Act
+		String compareString = emptyMap.toString();
+
+		//Assert
+		assertEquals(targetString, compareString);
+	}
 }

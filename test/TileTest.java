@@ -44,7 +44,26 @@ public class TileTest {
     }
 
     @Test
-    public void toStringShouldReturnCorrectString() {
-        fail("Not implemented");
+    public void toStringShouldReturnCorrectStringOnEmpty() {
+    	//Arrange
+        String desiredString = "-";
+
+        //Act
+		String compareString = emptyTile.toString();
+
+		//Assert
+		assertEquals(desiredString, compareString);
     }
+
+    public void toStringShouldReturnCorrectStringOnFull()
+	{
+		//Arrange
+		String desiredString = "@";
+
+		//Act
+		String compareString = fullTile.toString();
+
+		//Assert
+		assertEquals(desiredString, compareString);
+	}
 }
