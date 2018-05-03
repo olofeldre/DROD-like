@@ -1,3 +1,5 @@
+
+
 /**
  * Map: This class should store information about the map and
  * get information stored in specific tiles.
@@ -130,5 +132,66 @@ public class Map {
 		sb.deleteCharAt(lastIndex);
 
 		return sb.toString();
+	}
+
+	/**
+	 * Adds a horizontal wall to the map.
+	 * @param from the x-index the wall starts at
+	 * @param to the x-index the wall ends at
+	 * @param row what row the wall goes to
+	 */
+	public void addHorizontalWall(int from, int to, int row)
+	throws IndexOutOfBoundsException, IllegalArgumentException
+	{
+		if (to < from)
+		{
+			throw new IllegalArgumentException();
+		}
+		Tile throwAway;
+		try
+		{
+			throwAway = getTile(from, row);
+			throwAway = getTile(to, row);
+		}
+		catch (IndexOutOfBoundsException e)
+		{
+			throw new IndexOutOfBoundsException();
+		}
+		int tilesToChange = to - from + 1;
+		for (int currentXOffset = 0; currentXOffset < tilesToChange;
+			 currentXOffset++)
+		{
+			getTile(from + currentXOffset, row).setType(true);
+		}
+	}
+
+	/**
+	 * Adds a vertical wall to the map.
+	 * @param from the x-index the wall starts at
+	 * @param to the x-index the wall ends at
+	 * @param column what column the wall is in.
+	 */
+	public void addVerticalWall(int from, int to, int column)
+	{
+		if (to < from)
+		{
+			throw new IllegalArgumentException();
+		}
+		Tile throwAway;
+		try
+		{
+			throwAway = getTile(from, column);
+			throwAway = getTile(to, column);
+		}
+		catch (IndexOutOfBoundsException e)
+		{
+			throw new IndexOutOfBoundsException();
+		}
+		int tilesToChange = to - from + 1;
+		for (int currentYOffset = 0; currentYOffset < tilesToChange;
+			 currentYOffset++)
+		{
+			getTile(column, from + currentYOffset).setType(true);
+		}
 	}
 }

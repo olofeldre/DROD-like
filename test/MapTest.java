@@ -82,4 +82,55 @@ public class MapTest {
 		//Assert
 		assertEquals(targetString, compareString);
 	}
+
+	@Test
+	public void addHorizontalWallAddsWalls()
+	{
+		//Arrange
+		Map map = new Map(5, 5);
+
+								// from, to, row (both including)
+		//Act
+		map.addHorizontalWall(-2, 0, 0);
+
+		//Assert
+		assertTrue(map.getTile(-2, 0).isWall());
+	}
+
+	@Test (expected =  IllegalArgumentException.class)
+	public void addHorizontalWallThrowsIfFromLargerThanTo()
+	{
+		map.addHorizontalWall(5, -2, 3);
+	}
+
+	@Test (expected =  IndexOutOfBoundsException.class)
+	public void addHorizontalWalThrowsIfBadArgsAreGiven()
+	{
+		map.addHorizontalWall(14, 100, 2);
+	}
+
+	public void addVerticalWallAddsWalls()
+	{
+		//Arrange
+		Map map = new Map(5, 5);
+
+		// from, to, column (both including)
+		//Act
+		map.addVerticalWall(-2, 0, 0);
+
+		//Assert
+		assertTrue(map.getTile(0, 0).isWall());
+	}
+
+	@Test (expected =  IllegalArgumentException.class)
+	public void addVerticalWallThrowsIfFromLargerThanTo()
+	{
+		map.addVerticalWall(5, -2, 3);
+	}
+
+	@Test (expected =  IndexOutOfBoundsException.class)
+	public void addVerticalWalThrowsIfBadArgsAreGiven()
+	{
+		map.addVerticalWall(-75, -4, -10);
+	}
 }
