@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.util.Random;
 
 /**
@@ -317,4 +318,23 @@ public class Map {
 	}
 
 
+    public void draw(Graphics g, int width, int height) {
+	    int tileWidth = width / this.width;
+	    int tileHeight = height / this.height;
+
+	    for(int x = 0; x < tileMatrix.length; x++) {
+	        for(int y = 0; y < tileMatrix[x].length; y++) {
+	            Tile tile = tileMatrix[x][y];
+
+	            if(tile.isWall()) {
+	                g.setColor(Color.BLACK);
+                }
+                else {
+	                g.setColor(Color.WHITE);
+                }
+
+                g.fillRect(x*tileWidth, y*tileHeight, tileWidth, tileHeight);
+            }
+        }
+    }
 }
