@@ -1,8 +1,5 @@
-<<<<<<< HEAD
+import java.util.Random;
 
-
-=======
->>>>>>> 86a304f09fe0ef61c0710fb33e7fe464b827d175
 /**
  * Map: This class should store information about the map and
  * get information stored in specific tiles.
@@ -12,22 +9,19 @@ public class Map {
     private int width;
     private int height;
     private Tile [][] tileMatrix;
-
-    /**
+	private int [][] roomMatrix;
+	private Random random;
+	/**
      * Construct the map by initializing the tile matrix of size width * height
      * that stores all information on the map.
-<<<<<<< HEAD
      * @param width width of map to be constructed
      * @param height ditto, but for height
-=======
-     * @param width
-     * @param height
->>>>>>> 86a304f09fe0ef61c0710fb33e7fe464b827d175
      */
     public Map(int width, int height) {
         this.width = width;
         this.height = height;
         tileMatrix = new Tile[width][height];
+		roomMatrix = new int[width][height];
 
         // Add empty tile elements to the entire tile matrix.
         for (int i = 0; i < width; i++){
@@ -35,22 +29,16 @@ public class Map {
                 tileMatrix[i][j] = new Tile(false);
             }
         }
+        random = new Random();
     }
 
     /**
      * Return the the tile object located at (x, y) in the tile matrix.
-<<<<<<< HEAD
      * @param x x-position of tile in matrix
 	 *          origin of matrix is in the centre of the map.
      * @param y y-position of tile in the matrix.
      * @return Tile at coordinates
      * @throws IndexOutOfBoundsException if index does lies outside the map.
-=======
-     * @param x
-     * @param y
-     * @return Tile at coordinates
-     * @throws IndexOutOfBoundsException
->>>>>>> 86a304f09fe0ef61c0710fb33e7fe464b827d175
      */
     public Tile getTile(int x, int y) throws IndexOutOfBoundsException {
         if(!isValidTile(x,y)) {
@@ -90,7 +78,6 @@ public class Map {
         // If either index is invalid, the coordinates must be invalid.
         if(!isValidXIndex(indices[0]) || !isValidYIndex(indices[1])) {
             return false;
-<<<<<<< HEAD
         }
 
         return true;
@@ -107,37 +94,6 @@ public class Map {
         }
 
         return true;
-=======
-        }
-
-        return true;
-    }
-
-    /**
-     * Return whether the given index exists in the matrix.
-     * @param xIndex
-     * @return
-     */
-    private boolean isValidXIndex(int xIndex) {
-        if(xIndex >= tileMatrix[0].length || xIndex < 0) {
-            return false;
-        }
-
-        return true;
-    }
-
-    /**
-     * Return whether the given index exists in the matrix.
-     * @param yIndex
-     * @return
-     */
-    private boolean isValidYIndex(int yIndex) {
-        if(yIndex >= tileMatrix.length || yIndex < 0) {
-            return false;
-        }
-
-        return true;
->>>>>>> 86a304f09fe0ef61c0710fb33e7fe464b827d175
     }
 
     /**
@@ -241,4 +197,110 @@ public class Map {
 			getTile(column, from + currentYOffset).setType(true);
 		}
 	}
+
+	/**
+	 * Partitions the map as described in the document. This fills the
+	 * room matrix with room numbers, corresponding to the different rooms.
+	 *
+	 * This method can, and will be modified in the future to add the walls to
+	 * the map.
+	 * @throws IllegalStateException if the map is 5x5 or smaller, where there
+	 * is only one possible partition.
+	 */
+	public void partition() throws IllegalStateException
+	{
+		if (width < 6 || height < 6)
+		{
+			throw new IllegalStateException();
+		}
+
+		int roomNumber = 1;
+		final int STARTX = -(width/2);
+		final int STARTY = -(height/2);
+		int yOffset = 0;
+		int xOffset = 1;
+		int xRoomEnd;
+		int yRoomEnd;
+		while (yOffset < height -1)
+		{
+
+
+			while (xOffset < width)
+			{
+				if (getRoom(STARTX + xOffset, STARTY + yOffset) == 0)
+				{
+					int xRoomStart = STARTX + xOffset;
+					int yRoomStart = STARTY + yOffset;
+					yRoomEnd = roomEnd(yRoomStart, height + STARTY - 2);
+					xRoomEnd = roomEnd(xRoomStart, width + STARTX - 1);
+					rectangleRoom(xRoomStart, xRoomEnd,
+							yRoomStart, yRoomEnd, roomNumber);
+					roomNumber++;
+					//int gainedTiles = xRoomEnd - STARTX + 1;
+					//xOffset += gainedTiles;
+					System.out.println("Made room from: " + (STARTX + xOffset)
+							+ " to: " + xRoomEnd);
+					xOffset++;
+
+				}
+				else
+				{
+					xOffset++;
+				}
+			}
+			xOffset = 1;
+			yOffset++;
+			System.out.println("Next row: " + yOffset);
+		}
+
+	}
+
+
+	private int roomEnd(int start, int max)
+	{
+		int workspace = max - start;
+		if (workspace < 6)
+		{
+			return max ;
+		}
+		int randomNumber = random.nextInt(workspace - 5);
+		if(randomNumber == workspace - 6)
+		{
+			return max ;
+		}
+		else
+		{
+			return start + 2 + randomNumber;
+		}
+	}
+
+	private void rectangleRoom(int leftX, int rightX, int bottomY, int topY,
+							   int roomNumber)
+	{
+		int roomWidth = rightX - leftX + 1;
+		int roomHeight = topY - bottomY + 1;
+
+		for (int yOffset = 0; yOffset < roomHeight; yOffset++)
+		{
+			for (int xOffset = 0; xOffset < roomWidth; xOffset++)
+			{
+				int[] indeces = convertToIndex(leftX + xOffset,
+						bottomY + yOffset);
+				roomMatrix[indeces[0]] [indeces[1]] = roomNumber;
+			}
+		}
+	}
+
+	public int getRoom(int x, int y) throws IndexOutOfBoundsException
+	{
+		if(!isValidTile(x,y)) {
+			throw new IndexOutOfBoundsException("Tile is out of bounds.");
+		}
+		// Convert the coordinates to indeces in the tile matrix.
+		int[] index = convertToIndex(x, y);
+
+		return roomMatrix[index[0]][index[1]];
+	}
+
+
 }

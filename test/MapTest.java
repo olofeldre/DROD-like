@@ -129,8 +129,56 @@ public class MapTest {
 	}
 
 	@Test (expected =  IndexOutOfBoundsException.class)
-	public void addVerticalWalThrowsIfBadArgsAreGiven()
+	public void addVerticalWallThrowsIfBadArgsAreGiven()
 	{
 		map.addVerticalWall(-75, -4, -10);
+	}
+
+	@Test
+	public void partitionGivesTilesRooms()
+	{
+		map.partition();
+		assertNotEquals(map.getRoom(18, 5), 0);
+
+	}
+
+	@Test
+	public void unpartitionedMapsHaveNoRooms()
+	{
+		assertEquals(map.getRoom(4,3), 0);
+	}
+
+	@Test
+	public void parititionGivesAlmostAllRoomNumbers()
+	{
+		//Act
+		map.partition();
+
+		//Assert
+		for(int column = -24; column < 25; column++)
+		{
+			for (int row = -25; row < 24; row++)
+			{
+				assertNotEquals(map.getRoom(column, row), 0);
+			}
+		}
+	}
+
+	@Test
+	public void partitionLeavesTheFirstColumnAndRowBlank()
+	{
+		//Act
+		map.partition();
+
+		//Assert
+		for(int column = -25; column < 25; column++)
+		{
+			assertEquals(map.getRoom(column, 24), 0);
+		}
+
+		for(int row = -25; row < 25; row++)
+		{
+			assertEquals(map.getRoom(-25, row), 0);
+		}
 	}
 }
