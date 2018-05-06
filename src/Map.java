@@ -236,10 +236,15 @@ public class Map {
 					rectangleRoom(xRoomStart, xRoomEnd,
 							yRoomStart, yRoomEnd, roomNumber);
 					roomNumber++;
+					//Old pre-mature optimization. (Does not work)
+					//-O 0506
 					//int gainedTiles = xRoomEnd - STARTX + 1;
 					//xOffset += gainedTiles;
-					System.out.println("Made room from: " + (STARTX + xOffset)
-							+ " to: " + xRoomEnd);
+
+					//For debugging
+					//-O 0506
+					//System.out.println("Made room from: " + (STARTX + xOffset)
+					//		+ " to: " + xRoomEnd);
 					xOffset++;
 
 				}
@@ -250,8 +255,12 @@ public class Map {
 			}
 			xOffset = 1;
 			yOffset++;
-			System.out.println("Next row: " + yOffset);
+			//System.out.println("Next row: " + yOffset);
 		}
+
+		//Add the walls in the top and left part of the screen.
+		addHorizontalWall(STARTX, STARTX + width - 1, STARTY + height - 1);
+		addVerticalWall(STARTY, STARTY + height - 1, STARTX);
 
 	}
 
@@ -274,6 +283,9 @@ public class Map {
 		}
 	}
 
+	//This function creates rooms. It also adds walls in their bottom-right bit.
+	// Functions relying on this: partition
+	// -O 0506
 	private void rectangleRoom(int leftX, int rightX, int bottomY, int topY,
 							   int roomNumber)
 	{
@@ -289,6 +301,8 @@ public class Map {
 				roomMatrix[indeces[0]] [indeces[1]] = roomNumber;
 			}
 		}
+		addVerticalWall(bottomY, topY, rightX);
+		addHorizontalWall(leftX, rightX - 1, bottomY);
 	}
 
 	public int getRoom(int x, int y) throws IndexOutOfBoundsException

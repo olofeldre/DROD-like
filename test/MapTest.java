@@ -7,9 +7,11 @@ import static org.junit.Assert.*;
 
 public class MapTest {
     private Map map;
+    private Map oddMap;
     @Before
     public void setup() {
         map = new Map(50, 50);
+        oddMap = new Map(51, 51);
     }
 
     @Test
@@ -137,8 +139,12 @@ public class MapTest {
 	@Test
 	public void partitionGivesTilesRooms()
 	{
+		// Act
 		map.partition();
+		oddMap.partition();
+
 		assertNotEquals(map.getRoom(18, 5), 0);
+		assertNotEquals(oddMap.getRoom(18, 5), 0);
 
 	}
 
@@ -146,10 +152,11 @@ public class MapTest {
 	public void unpartitionedMapsHaveNoRooms()
 	{
 		assertEquals(map.getRoom(4,3), 0);
+		assertEquals(oddMap.getRoom(4, 3), 0);
 	}
 
 	@Test
-	public void parititionGivesAlmostAllRoomNumbers()
+	public void partitionGivesAlmostAllRoomNumbers()
 	{
 		//Act
 		map.partition();
@@ -163,6 +170,23 @@ public class MapTest {
 			}
 		}
 	}
+
+	@Test
+	public void partitionGivesAlmostAllRoomNumbersInOddMaps()
+	{
+		//Act
+		oddMap.partition();
+
+		//Assert
+		for(int column = -24; column < 26; column++)
+		{
+			for (int row = -25; row < 25; row++)
+			{
+				assertNotEquals(oddMap.getRoom(column, row), 0);
+			}
+		}
+	}
+
 
 	@Test
 	public void partitionLeavesTheFirstColumnAndRowBlank()
@@ -180,5 +204,30 @@ public class MapTest {
 		{
 			assertEquals(map.getRoom(-25, row), 0);
 		}
+	}
+
+	@Test
+	public void partitionAddsWallInTopLeftCorner()
+	{
+		//Act
+		map.partition();
+		oddMap.partition();
+
+		//Assert
+		assertEquals(true, map.getTile(-25, 24).isWall() );
+		assertEquals(true, oddMap.getTile(-25, 25).isWall() );
+	}
+
+	@Test
+	public void partitionAddsWallInBottomRightCorner()
+	{
+		//Act
+		oddMap.partition();
+		map.partition();
+
+		//Assert
+		assertEquals(true, map.getTile(24, -25).isWall() );
+		assertEquals(true, oddMap.getTile(25, -25).isWall() );
+
 	}
 }
