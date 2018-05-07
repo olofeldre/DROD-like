@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.util.Random;
 
 /**
@@ -373,5 +374,34 @@ public class Map {
 		sb.deleteCharAt(lastIndex);
 
 		return sb.toString();
+	}
+
+	/**
+	 * Draw the map.
+	 * @param g
+	 */
+	public void draw(Graphics g, int windowWidth, int windowHeight) {
+		int tileWidth = windowWidth / width;
+		int tileHeight = windowHeight / height;
+
+		Color wallColor = new Color(170, 85, 0);
+		Color floorColor = Color.BLACK;
+		Color tileColor = Color.GREEN;
+
+		for(int x = 0; x < width; x++) {
+			for(int y = 0; y < height; y++) {
+				Tile tile = tileMatrix[x][y];
+				if(tile.isWall()) {
+					g.setColor(wallColor);
+					g.fillRect(x * tileWidth, y * tileHeight, tileWidth, tileHeight);
+				}
+				else {
+					g.setColor(floorColor);
+					g.fillRect(x * tileWidth, y * tileHeight, tileWidth, tileHeight);
+					g.setColor(tileColor);
+					g.fillRect(x*tileWidth + tileWidth / 2, y*tileHeight + tileHeight / 2,2, 2);
+				}
+			}
+		}
 	}
 }

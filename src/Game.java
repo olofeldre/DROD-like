@@ -1,13 +1,38 @@
-public class Game {
+import javax.swing.*;
+import java.awt.*;
+
+public class Game extends JPanel {
+	public static final int WINDOW_WIDTH = 500;
+	public static final int WINDOW_HEIGHT = 500;
+	public static final String WINDOW_TITLE = "Rogue";
+
+	private JFrame frame;
+	private Map map;
+
     public static void main(String[] args) {
-        //System.out.println("Hello, World!");
 		Map testMap = new Map(20, 20);
 		testMap.partition();
 		System.out.println(testMap.roomString());
 		System.out.println(testMap);
 
-		//testMap.addHorizontalWall(-10, 9, 9);
-		//System.out.println(testMap);
+		JFrame gameFrame = FrameFactory.create(WINDOW_TITLE, WINDOW_WIDTH, WINDOW_HEIGHT);
 
+		Game game = new Game(gameFrame, testMap);
+		game.start();
+	}
+
+	public Game(JFrame frame, Map map) {
+		this.frame = frame;
+		this.map = map;
+		frame.add(this);
+	}
+
+	public void start() {
+    	frame.setVisible(true);
+    	repaint();
+	}
+
+	public void paintComponent(Graphics g) {
+        map.draw(g, getWidth(), getHeight());
 	}
 }
