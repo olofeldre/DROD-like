@@ -237,8 +237,10 @@ public class Map {
 				{
 					int xRoomStart = STARTX + xOffset;
 					int yRoomStart = STARTY + yOffset;
+					int xRoomEndScope = probe(xRoomStart, yRoomStart);
+
 					yRoomEnd = roomEnd(yRoomStart, height + STARTY - 2);
-					xRoomEnd = roomEnd(xRoomStart, width + STARTX - 1);
+					xRoomEnd = roomEnd(xRoomStart, xRoomEndScope);
 					rectangleRoom(xRoomStart, xRoomEnd,
 							yRoomStart, yRoomEnd, roomNumber);
 					roomNumber++;
@@ -273,6 +275,28 @@ public class Map {
 
 	}
 
+	private int probe(int fromX, int rowY)
+	{
+		int maxX;
+		if (width % 2 == 0)
+		{
+			maxX =  width / 2  - 1;
+		}
+		else
+		{
+			maxX = width / 2;
+		}
+		int currentX = fromX;
+		while (currentX <= maxX)
+		{
+			if (getRoom(currentX, rowY) != 0 )
+			{
+				return currentX;
+			}
+			currentX ++;
+		}
+		return maxX;
+	}
 
 	private int roomEnd(int start, int max)
 	{
@@ -291,6 +315,8 @@ public class Map {
 			return start + 2 + randomNumber;
 		}
 	}
+
+
 
 	//This function creates rooms. It also adds walls in their bottom-right bit.
 	// Functions relying on this: partition

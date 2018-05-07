@@ -274,4 +274,6 @@ public class MapTest {
 		map = new Map(5, 5);
 		assertTrue(map.roomString().startsWith("0") );
 	}
+
+
 }
