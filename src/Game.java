@@ -21,6 +21,11 @@ public class Game extends JPanel {
 		game.start();
 	}
 
+	/**
+	 * Add the game to the frame so that it can be rendered to.
+	 * @param frame
+	 * @param map
+	 */
 	public Game(JFrame frame, Map map) {
 		this.frame = frame;
 		this.map = map;
