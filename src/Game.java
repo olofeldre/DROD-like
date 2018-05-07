@@ -35,11 +35,18 @@ public class Game extends JPanel {
 		frame.add(this);
 	}
 
+	/**
+	 * Make the window visible.
+	 */
 	public void start() {
     	frame.setVisible(true);
     	repaint();
 	}
 
+	/**
+	 * Paint the map.
+	 * @param g
+	 */
 	public void paintComponent(Graphics g) {
         map.draw(g, getWidth(), getHeight());
 	}
