@@ -11,8 +11,10 @@ public class Game extends JPanel {
 
 	private JFrame frame;
 	private Map map;
+	private Player player;
 
-    public static void main(String[] args) {
+    public static void main(String[] args)
+	{
 		Map testMap = new Map(20, 20);
 		testMap.partition();
 		System.out.println(testMap.roomString());
@@ -20,7 +22,10 @@ public class Game extends JPanel {
 
 		JFrame gameFrame = FrameFactory.create(WINDOW_TITLE, WINDOW_WIDTH, WINDOW_HEIGHT);
 
+		Player player = new Player(0,0);
+
 		Game game = new Game(gameFrame, testMap);
+		game.setPlayer(player);
 		game.start();
 	}
 
@@ -29,7 +34,8 @@ public class Game extends JPanel {
 	 * @param frame
 	 * @param map
 	 */
-	public Game(JFrame frame, Map map) {
+	public Game(JFrame frame, Map map)
+	{
 		this.frame = frame;
 		this.map = map;
 		frame.add(this);
@@ -38,7 +44,8 @@ public class Game extends JPanel {
 	/**
 	 * Make the window visible.
 	 */
-	public void start() {
+	public void start()
+	{
     	frame.setVisible(true);
     	repaint();
 	}
@@ -47,7 +54,14 @@ public class Game extends JPanel {
 	 * Paint the map.
 	 * @param g
 	 */
-	public void paintComponent(Graphics g) {
+	public void paintComponent(Graphics g)
+	{
         map.draw(g, getWidth(), getHeight());
+        player.draw(g, getWidth(), getHeight(), map);
+	}
+
+	public void setPlayer(Player player)
+	{
+		this.player = player;
 	}
 }

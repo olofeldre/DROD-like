@@ -380,7 +380,8 @@ public class Map {
 	 * Draw the map.
 	 * @param g
 	 */
-	public void draw(Graphics g, int windowWidth, int windowHeight) {
+	public void draw(Graphics g, int windowWidth, int windowHeight)
+	{
 		int tileWidth = windowWidth / width;
 		int tileHeight = windowHeight / height;
 
@@ -403,5 +404,38 @@ public class Map {
 				}
 			}
 		}
+	}
+
+	/**
+	 * Get a tile's center position.
+	 * @param x
+	 * @param y
+	 * @param windowWidth
+	 * @param windowHeight
+	 * @return the center of the tile.
+	 * @throws IndexOutOfBoundsException if the given tile is outside the map.
+	 */
+	public Point getTileCenter(int x, int y, int windowWidth, int windowHeight) throws IndexOutOfBoundsException {
+		if(!isValidTile(x, y)) {
+			throw new IndexOutOfBoundsException("Tile is outside bounds");
+		}
+
+		int[] indeces = convertToIndex(x, y);
+		int tileWidth = windowWidth / width;
+		int tileHeight = windowHeight / height;
+
+		int pixelX = indeces[0];
+		int pixelY = indeces[1];
+
+		return new Point(pixelX * tileWidth + tileWidth / 2,pixelY * tileHeight + tileHeight / 2);
+	}
+
+	/**
+	 * Return whether or not the given tile at coordinates (x, y) can be walked on.
+	 * @return
+	 */
+	public boolean isWalkable(int x, int y)
+	{
+		return !getTile(x, y).isWall();
 	}
 }

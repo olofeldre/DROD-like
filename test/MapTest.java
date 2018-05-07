@@ -2,6 +2,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 
+import java.awt.*;
+
+import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.junit.Assert.*;
 
@@ -275,5 +278,47 @@ public class MapTest {
 		assertTrue(map.roomString().startsWith("0") );
 	}
 
+	@Test
+	public void isWalkableShouldReturnTrueForAllTilesInEmptyMap() {
+		map = new Map(10, 10);
+		assertTrue(map.isWalkable(0, 0));
+		assertTrue(map.isWalkable(0, 1));
+		assertTrue(map.isWalkable(4, 4));
+	}
+
+	@Test
+	public void isWalkableShouldReturnFalseOnWall() {
+		map = new Map(10, 10);
+		map.addVerticalWall(-5, 4, -5);
+
+		assertFalse(map.isWalkable(-5, -5));
+	}
+
+	@Test(expected=IndexOutOfBoundsException.class)
+	public void isWalkableWithPositionOutsideBoundsShouldThrowException() {
+    	map.isWalkable(100, 100);
+	}
+
+	@Test(expected=IndexOutOfBoundsException.class)
+	public void getTileCenterShouldThrowExceptionGivenPositionOutsideMap() {
+    	map = new Map(10, 10);
+    	map.getTileCenter(-20, -20, 500 ,500);
+	}
+
+	@Test
+	public void getTileCenterShouldBeCorrectOnTopLeftCorner() {
+    	map = new Map(10, 10);
+    	Point center = map.getTileCenter(-5, 4, 500, 500);
+    	assertThat((int)center.getX(), equalTo(25));
+    	assertThat((int)center.getY(), equalTo(25));
+	}
+
+	@Test
+	public void getTileCenterShouldBeCorrectOnCenterTile() {
+    	map = new Map(10, 10);
+    	Point center = map.getTileCenter(0, 0, 500, 500);
+    	assertThat((int) center.getX(), equalTo(275));
+    	assertThat((int) center.getY(), equalTo(225));
+	}
 
 }
