@@ -228,15 +228,19 @@ public class MapTest {
 		map.partition();
 
 		//Assert
+
 		for(int column = -25; column < 25; column++)
 		{
 			assertEquals(map.getRoom(column, 24), 0);
 		}
+		System.out.println("Top row ok!");
 
 		for(int row = -25; row < 25; row++)
 		{
 			assertEquals(map.getRoom(-25, row), 0);
 		}
+		System.out.println("Left col ok!");
+
 	}
 
 	@Test

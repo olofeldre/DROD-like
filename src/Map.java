@@ -60,8 +60,8 @@ public class Map {
     private int[] convertToIndex(int x, int y){
         int[] indices = new int[2];
         int newX = x + width/2;
-        int newY;
-        if (height % 2 == 0)
+		int newY;
+		if (height % 2 == 0)
 		{
 			newY = height / 2 - y - 1;
 		}
@@ -69,7 +69,7 @@ public class Map {
 		{
 			newY = height / 2 - y;
 		}
-
+		//newY = height / 2 + y;
 		indices[0] = newX;
         indices[1] = newY;
         return indices;
@@ -120,8 +120,6 @@ public class Map {
 
 	public String toString()
 	{
-		final int STARTX = -(width/2);
-		final int STARTY = -(height/2);
 
 		StringBuilder sb = new StringBuilder();
 		for (int currentYOffset = 0
@@ -130,8 +128,7 @@ public class Map {
 			for (int currentXOffset = 0; currentXOffset < width;
 				 currentXOffset++)
 			{
-				Tile currentTile = getTile(STARTX + currentXOffset,
-						STARTY + currentYOffset);
+				Tile currentTile = tileMatrix[currentXOffset] [currentYOffset];
 
 				sb.append(currentTile.toString());
 			}
@@ -226,11 +223,11 @@ public class Map {
 		int roomNumber = 1;
 		final int STARTX = -(width/2);
 		final int STARTY = -(height/2);
-		int yOffset = 1;
+		int yOffset = 0;
 		int xOffset = 1;
 		int xRoomEnd;
 		int yRoomEnd;
-		while (yOffset < height)
+		while (yOffset < height - 1)
 		{
 
 
@@ -240,7 +237,7 @@ public class Map {
 				{
 					int xRoomStart = STARTX + xOffset;
 					int yRoomStart = STARTY + yOffset;
-					yRoomEnd = roomEnd(yRoomStart, height + STARTY - 1);
+					yRoomEnd = roomEnd(yRoomStart, height + STARTY - 2);
 					xRoomEnd = roomEnd(xRoomStart, width + STARTX - 1);
 					rectangleRoom(xRoomStart, xRoomEnd,
 							yRoomStart, yRoomEnd, roomNumber);
@@ -330,9 +327,6 @@ public class Map {
 
 	public String roomString()
 	{
-		final int STARTX = -(width/2);
-		final int STARTY = -(height/2);
-
 		StringBuilder sb = new StringBuilder();
 		for (int currentYOffset = 0
 			 ; currentYOffset < height; currentYOffset++)
@@ -340,8 +334,7 @@ public class Map {
 			for (int currentXOffset = 0; currentXOffset < width;
 				 currentXOffset++)
 			{
-				int currentRoomNo = getRoom((STARTX + currentXOffset),
-				(STARTY + currentYOffset));
+				int currentRoomNo = roomMatrix[currentXOffset][currentYOffset];
 
 				sb.append(currentRoomNo);
 			}
