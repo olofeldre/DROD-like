@@ -287,9 +287,9 @@ public class Map {
 			maxX = width / 2;
 		}
 		int currentX = fromX;
-		while (currentX <= maxX)
+		while (currentX + 1 <= maxX)
 		{
-			if (getRoom(currentX, rowY) != 0 )
+			if (getRoom(currentX + 1, rowY) != 0 )
 			{
 				return currentX;
 			}
