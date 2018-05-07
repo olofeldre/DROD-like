@@ -63,6 +63,13 @@ public class MapTest {
         Map map = new Map(5, 5);
         map.getTile(3, 3);
     }
+
+    @Test
+	public void getTileInCornerOfEvenMapShouldNotThrowException()
+	{
+		map.getTile(24, 24);
+	}
+
 	@Test
     public void toStringWorksOnEmptyMaps()
 	{
@@ -122,6 +129,32 @@ public class MapTest {
 
 		//Assert
 		assertTrue(map.getTile(0, 0).isWall());
+	}
+
+	@Test
+	public void addHorizontalWallWorksInEdges()
+	{
+		//Arrange
+		Map map = new Map(5, 5);
+
+		//Act
+		map.addHorizontalWall(-2, 2, -2);
+
+		//Assert
+		assertTrue(map.getTile(2, -2).isWall());
+	}
+
+	@Test
+	public void addVerticalWallWorksInEdges()
+	{
+		//Arrange
+		Map map = new Map(5, 5);
+
+		//Act
+		map.addVerticalWall(-2, 2, -2);
+
+		//Assert
+		assertTrue(map.getTile(-2, 0).isWall());
 	}
 
 	@Test (expected =  IllegalArgumentException.class)
@@ -229,5 +262,12 @@ public class MapTest {
 		assertEquals(true, map.getTile(24, -25).isWall() );
 		assertEquals(true, oddMap.getTile(25, -25).isWall() );
 
+	}
+
+	@Test
+	public void roomStringHasZeros()
+	{
+		map = new Map(5, 5);
+		assertTrue(map.roomString().startsWith("0") );
 	}
 }

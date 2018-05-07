@@ -1,4 +1,3 @@
-import java.awt.*;
 import java.util.Random;
 
 /**
@@ -52,7 +51,7 @@ public class Map {
 
     /**
      * Convert the given coordinates to indeces for the tile matrix.
-     * (-width/2, -height/2) is the top right corner of the matrix.
+     * (-width/2, height/2) is the top left corner of the matrix.
      * This corresponds to [0][0] in the two-dimensional-array-
      * @param x
      * @param y
@@ -61,8 +60,17 @@ public class Map {
     private int[] convertToIndex(int x, int y){
         int[] indices = new int[2];
         int newX = x + width/2;
-        int newY = y + height/2;
-        indices[0] = newX;
+        int newY;
+        if (height % 2 == 0)
+		{
+			newY = height / 2 - y - 1;
+		}
+		else
+		{
+			newY = height / 2 - y;
+		}
+
+		indices[0] = newX;
         indices[1] = newY;
         return indices;
     }
@@ -218,11 +226,11 @@ public class Map {
 		int roomNumber = 1;
 		final int STARTX = -(width/2);
 		final int STARTY = -(height/2);
-		int yOffset = 0;
+		int yOffset = 1;
 		int xOffset = 1;
 		int xRoomEnd;
 		int yRoomEnd;
-		while (yOffset < height -1)
+		while (yOffset < height)
 		{
 
 
@@ -232,7 +240,7 @@ public class Map {
 				{
 					int xRoomStart = STARTX + xOffset;
 					int yRoomStart = STARTY + yOffset;
-					yRoomEnd = roomEnd(yRoomStart, height + STARTY - 2);
+					yRoomEnd = roomEnd(yRoomStart, height + STARTY - 1);
 					xRoomEnd = roomEnd(xRoomStart, width + STARTX - 1);
 					rectangleRoom(xRoomStart, xRoomEnd,
 							yRoomStart, yRoomEnd, roomNumber);
@@ -244,8 +252,8 @@ public class Map {
 
 					//For debugging
 					//-O 0506
-					//System.out.println("Made room from: " + (STARTX + xOffset)
-					//		+ " to: " + xRoomEnd);
+		//			System.out.println("Made room from: " + (STARTX + xOffset)
+		//					+ " to: " + xRoomEnd);
 					xOffset++;
 
 				}
@@ -256,11 +264,14 @@ public class Map {
 			}
 			xOffset = 1;
 			yOffset++;
-			//System.out.println("Next row: " + yOffset);
+		//	System.out.println("Next row: " + yOffset);
 		}
 
+		System.out.println(STARTY + " " + (STARTY + height -1)+ " " +
+				" " + (STARTX));
 		//Add the walls in the top and left part of the screen.
-		addHorizontalWall(STARTX, STARTX + width - 1, STARTY + height - 1);
+		addHorizontalWall(STARTX + 1, STARTX + width - 1,
+				STARTY + height - 1);
 		addVerticalWall(STARTY, STARTY + height - 1, STARTX);
 
 	}
@@ -317,24 +328,31 @@ public class Map {
 		return roomMatrix[index[0]][index[1]];
 	}
 
+	public String roomString()
+	{
+		final int STARTX = -(width/2);
+		final int STARTY = -(height/2);
 
-    public void draw(Graphics g, int width, int height) {
-	    int tileWidth = width / this.width;
-	    int tileHeight = height / this.height;
+		StringBuilder sb = new StringBuilder();
+		for (int currentYOffset = 0
+			 ; currentYOffset < height; currentYOffset++)
+		{
+			for (int currentXOffset = 0; currentXOffset < width;
+				 currentXOffset++)
+			{
+				int currentRoomNo = getRoom((STARTX + currentXOffset),
+				(STARTY + currentYOffset));
 
-	    for(int x = 0; x < tileMatrix.length; x++) {
-	        for(int y = 0; y < tileMatrix[x].length; y++) {
-	            Tile tile = tileMatrix[x][y];
+				sb.append(currentRoomNo);
+			}
+			sb.append("\n");
+		}
+		int lastIndex = sb.length() - 1;
 
-	            if(tile.isWall()) {
-	                g.setColor(Color.BLACK);
-                }
-                else {
-	                g.setColor(Color.WHITE);
-                }
+		//Removes final \n
+		//o 180503
+		sb.deleteCharAt(lastIndex);
 
-                g.fillRect(x*tileWidth, y*tileHeight, tileWidth, tileHeight);
-            }
-        }
-    }
+		return sb.toString();
+	}
 }
