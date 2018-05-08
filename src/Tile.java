@@ -1,5 +1,6 @@
 public class Tile {
     private boolean wall;
+    private Movable movable;
 
     public Tile(boolean wall){
         this.wall = wall;
@@ -7,6 +8,10 @@ public class Tile {
 
     public void setType(boolean wall) {
         this.wall = wall;
+    }
+
+    public void setMovable(Movable movable) {
+        this.movable = movable;
     }
 
     public String toString()
@@ -21,5 +26,9 @@ public class Tile {
 
     public boolean isWall() {
         return wall;
+    }
+
+    public Movable getMovable() {
+        return movable;
     }
 }

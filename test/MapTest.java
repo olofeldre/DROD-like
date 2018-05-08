@@ -236,13 +236,11 @@ public class MapTest {
 		{
 			assertEquals(map.getRoom(column, 24), 0);
 		}
-		System.out.println("Top row ok!");
 
 		for(int row = -25; row < 25; row++)
 		{
 			assertEquals(map.getRoom(-25, row), 0);
 		}
-		System.out.println("Left col ok!");
 
 	}
 
@@ -319,6 +317,27 @@ public class MapTest {
     	Point center = map.getTileCenter(0, 0, 500, 500);
     	assertThat((int) center.getX(), equalTo(275));
     	assertThat((int) center.getY(), equalTo(225));
+	}
+
+	@Test
+	public void createPlayerShouldReturnValidPlayer() {
+    	assertThat(map.createPlayer(0,0), notNullValue());
+	}
+
+	@Test(expected=IndexOutOfBoundsException.class)
+	public void createPlayerShouldThrowExceptionIfTileIsOutsideBounds() {
+    	map.createPlayer(50, 50);
+	}
+
+	@Test
+	public void shouldAddPlayerToTileAtCorrectPosition() {
+    	map.createPlayer(10, 10);
+    	Tile tile = map.getTile(10 ,10);
+    	Movable movable = tile.getMovable();
+
+    	System.out.println(movable);
+
+    	assertThat(movable.getType(), equalTo(MovableType.PLAYER));
 	}
 
 }

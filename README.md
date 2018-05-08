@@ -2,11 +2,11 @@
 
 ## What is the project about?
     
-Our project is a top down roguelike and turn-based. The game will be 2D.
+Our project is a top down roguelike and turn-based, similar to another game called [DROD](http://caravelgames.com/Articles/Games_2/TSS.html). The game will be 2D.
 
 ### Game rules
 
-The game map is a grid and you can move in eight directions. There will be enemies on the map that move towards you   every time you make a move. The goal of the game is to kill all the enemies on the map. 
+The game map is a grid and you can move in eight directions. There will be enemies on the map that move towards you   every time you make a move. The goal of the game is to kill all the enemies on the map and traverse the maps. 
     
     
 ## How do i install and use the project?
