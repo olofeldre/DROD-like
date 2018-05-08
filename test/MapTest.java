@@ -321,23 +321,34 @@ public class MapTest {
 
 	@Test
 	public void createPlayerShouldReturnValidPlayer() {
-    	assertThat(map.createPlayer(0,0), notNullValue());
+    	assertThat(map.createMovable(0,0, MovableType.PLAYER), notNullValue());
 	}
 
 	@Test(expected=IndexOutOfBoundsException.class)
 	public void createPlayerShouldThrowExceptionIfTileIsOutsideBounds() {
-    	map.createPlayer(50, 50);
+    	map.createMovable(50, 50, MovableType.PLAYER);
 	}
 
 	@Test
 	public void shouldAddPlayerToTileAtCorrectPosition() {
-    	map.createPlayer(10, 10);
+    	map.createMovable(10, 10, MovableType.PLAYER);
     	Tile tile = map.getTile(10 ,10);
     	Movable movable = tile.getMovable();
 
     	System.out.println(movable);
 
     	assertThat(movable.getType(), equalTo(MovableType.PLAYER));
+	}
+
+	@Test
+	public void shouldAddRoachAtCorrectPosition() {
+		map.createMovable(8, 8, MovableType.ROACH);
+		Tile tile = map.getTile(8 ,8);
+		Movable movable = tile.getMovable();
+
+		System.out.println(movable);
+
+		assertThat(movable.getType(), equalTo(MovableType.ROACH));
 	}
 
 }

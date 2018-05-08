@@ -437,10 +437,11 @@ public class Map {
 		return !getTile(x, y).isWall();
 	}
 
-	public Player createPlayer(int x, int y) {
+	public Movable createMovable(int x, int y, MovableType type) {
 		Tile tile = getTile(x, y);
-		Player player = new Player();
-		tile.setMovable(player);
-		return player;
+		Movable movable = MovableMaker.create(type);
+		tile.setMovable(movable);
+		return movable;
 	}
+
 }

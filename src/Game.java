@@ -28,12 +28,14 @@ public class Game extends JPanel {
     	map.addHorizontalWall(-5, 4, 4);
     	map.addHorizontalWall(-5, 4, -5);
     	map.addVerticalWall(-5 ,4, -5);
-    	map.addVerticalWall(2, 3, -2);
+		map.addVerticalWall(-5 ,4, 4);
+
+		map.addVerticalWall(2, 3, -2);
     	map.addVerticalWall(-4, -2, -2);
     	map.addHorizontalWall(0, 1, 0);
     	map.addVerticalWall(-4, -2, 1);
 
-    	map.createPlayer(2, -3);
+    	map.createMovable(2, -3, MovableType.PLAYER);
 
     	return map;
 	}
