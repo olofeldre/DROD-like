@@ -4,5 +4,5 @@ public abstract class Enemy extends Movable {
         super(x,y);
     }
 
-    public abstract void act(int playerX, int playerY);
+    public abstract void act(int playerX, int playerY, Map map);
 }

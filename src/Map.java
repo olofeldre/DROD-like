@@ -455,7 +455,7 @@ public class Map {
 	{
 		for(Enemy enemy: enemies)
 		{
-			enemy.act(playerX, playerY);
+			enemy.act(playerX, playerY, this);
 		}
 
 	}

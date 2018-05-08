@@ -32,7 +32,7 @@ public class Tile {
         return movable;
     }
 
-    public void removeMoveable()
+    public void removeMovable()
 	{
 		movable	= null;
 	}

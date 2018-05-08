@@ -15,41 +15,52 @@ public class Roach extends Enemy {
     @Override
 	public void move(Direction d, Map map)
 	{
-		map.getTile(x, y).removeMoveable();
+		map.getTile(x, y).removeMovable();
 		switch (d)
 		{
 			case UP:
 				y = y +1;
+				break;
 
 			case DOWN:
-				y = y -1);
+				y = y -1;
+				break;
+
 
 			case LEFT:
-				x = x - 1
+				x = x - 1;
+				break;
+
 
 			case RIGHT:
-				x = x + 1
+				x = x + 1;
+				break;
+
 
 			case UPLEFT:
 				x -= 1;
 				y +=1;
+				break;
 
 			case UPRIGHT:
 				x += 1;
 				y +=1;
+				break;
+
 
 			case DOWNRIGHT:
 				 x += 1;
 				 y -= 1;
+				break;
 
 			case DOWNLEFT:
 				x -= 1;
 				y -= 1;
+				break;
 		}
 		map.getTile(x, y).setMovable(this);
 	}
 
-    @Override
 	public void act(int playerX, int playerY, Map map)
 	{
 		Direction d = Direction.LEFT;
@@ -92,7 +103,7 @@ public class Roach extends Enemy {
 		boolean b = false;
 		switch (d)
 		{
-			case UP;
+			case UP:
 				b = tryMove(Direction.UP, map);
 				if (b == false)
 				{
@@ -118,7 +129,7 @@ public class Roach extends Enemy {
 	}
 	private boolean tryMove(Direction d, Map map)
 	{
-		boolean ok = false
+		boolean ok = false;
 		switch (d)
 		{
 			case UP:
@@ -144,7 +155,7 @@ public class Roach extends Enemy {
 			case DOWNLEFT:
 				ok= freeTile(map, x - 1, y - 1);
 		}
-		if ok
+		if(ok)
 		{
 			move(d, map);
 		}
