@@ -19,6 +19,8 @@ public abstract class Movable {
 
     }
 
+
+
     public abstract void display(Graphics graphics, int x, int y);
 
 }
