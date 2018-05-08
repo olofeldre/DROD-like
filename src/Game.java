@@ -86,9 +86,15 @@ public class Game extends JPanel {
 	}
 
 	public void keyPressed(int keyCode) {
-		System.out.println(keyCode);
 		switch(keyCode) {
-			case KeyEvent.VK_O: player.move(Direction.RIGHT, map);
+            case KeyEvent.VK_8: player.move(Direction.UP, map); break;
+            case KeyEvent.VK_9: player.move(Direction.UPRIGHT, map); break;
+            case KeyEvent.VK_O: player.move(Direction.RIGHT, map); break;
+            case KeyEvent.VK_K: player.move(Direction.DOWN, map); break;
+            case KeyEvent.VK_L: player.move(Direction.DOWNRIGHT, map); break;
+            case KeyEvent.VK_U: player.move(Direction.LEFT, map); break;
+            case KeyEvent.VK_7: player.move(Direction.UPLEFT, map); break;
+            case KeyEvent.VK_J: player.move(Direction.DOWNLEFT, map); break;
 		}
 
 		repaint();
