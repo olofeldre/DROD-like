@@ -18,7 +18,7 @@ u i o
 
 j k l 
 
-To move and Q, W to rotate the sword counter-clockwise or clockwise.
+To move and q, W to rotate the sword counter-clockwise and clockwise.
     
 ## How do i install and use the project?
   
