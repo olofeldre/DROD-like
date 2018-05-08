@@ -17,9 +17,6 @@ public class Roach extends Enemy {
 		int xMove = (int)Math.signum((float)playerX - x);
 		int yMove = (int)Math.signum((float)playerY - y);
 
-		System.out.println(xMove);
-		System.out.println(yMove);
-
 		if(!tryMoveTo(x + xMove, y + yMove, map)) {
 			if(!tryMoveTo(x + xMove, y, map)) {
 				tryMoveTo(x, y + yMove, map);
