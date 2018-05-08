@@ -76,8 +76,7 @@ public class Map {
         indices[1] = newY;
         return indices;
     }
-
-    
+	
 
     /**
      * Return whether the given coordinates correspond to a valid tile in the matrix.
