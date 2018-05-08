@@ -1,21 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="542812e4-5218-4c53-a477-559d86cc2da6" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Movable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MovableType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Roach.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sword.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Enemy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Map.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/MapTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/MapTest.java" afterDir="false" />
-    </list>
+    <list default="true" id="542812e4-5218-4c53-a477-559d86cc2da6" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -47,17 +33,12 @@
       <file leaf-file-name="Player.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" selection-start-line="4" selection-end-line="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Sword.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Sword.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret lean-forward="true" />
+            <state relative-caret-position="75">
+              <caret line="5" column="39" selection-start-line="5" selection-start-column="39" selection-end-line="5" selection-end-column="39" />
+              <folding>
+                <element signature="e#161#162#0" expanded="true" />
+                <element signature="e#207#208#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -87,7 +68,7 @@
       <file leaf-file-name="Tile.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Tile.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
+            <state relative-caret-position="420">
               <caret line="32" column="5" lean-forward="true" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
               <folding>
                 <element signature="e#256#257#0" expanded="true" />
@@ -114,11 +95,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MapTest.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MapTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/MapTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="337" column="67" lean-forward="true" selection-start-line="337" selection-start-column="67" selection-end-line="337" selection-end-column="67" />
+            <state relative-caret-position="165">
+              <caret line="337" column="34" selection-start-line="337" selection-start-column="34" selection-end-line="337" selection-end-column="34" />
               <folding>
                 <element signature="e#6027#6028#0" expanded="true" />
                 <element signature="e#6061#6062#0" expanded="true" />
@@ -129,6 +110,11 @@
               </folding>
             </state>
           </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="projinda-rogue.iml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.idea/projinda-rogue.iml">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file leaf-file-name="MovableType.java" pinned="false" current-in-tab="false">
@@ -143,8 +129,8 @@
       <file leaf-file-name="Map.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Map.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="440" column="34" lean-forward="true" selection-start-line="440" selection-start-column="34" selection-end-line="440" selection-end-column="34" />
+            <state relative-caret-position="184">
+              <caret line="442" column="22" lean-forward="true" selection-start-line="442" selection-start-column="22" selection-end-line="442" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#10828#10829#0" expanded="true" />
@@ -182,16 +168,16 @@
         <option value="$PROJECT_DIR$/test/TileTest.java" />
         <option value="$PROJECT_DIR$/src/FrameFactory.java" />
         <option value="$PROJECT_DIR$/test/PlayerTest.java" />
-        <option value="$PROJECT_DIR$/src/Player.java" />
         <option value="$PROJECT_DIR$/src/Sword.java" />
         <option value="$PROJECT_DIR$/src/Tile.java" />
         <option value="$PROJECT_DIR$/src/Game.java" />
-        <option value="$PROJECT_DIR$/src/Map.java" />
         <option value="$PROJECT_DIR$/src/MovableType.java" />
         <option value="$PROJECT_DIR$/src/Movable.java" />
         <option value="$PROJECT_DIR$/src/Enemy.java" />
         <option value="$PROJECT_DIR$/src/Roach.java" />
+        <option value="$PROJECT_DIR$/src/Player.java" />
         <option value="$PROJECT_DIR$/test/MapTest.java" />
+        <option value="$PROJECT_DIR$/src/Map.java" />
       </list>
     </option>
   </component>
@@ -221,16 +207,6 @@
             <path>
               <item name="projinda-rogue" type="b2602c69:ProjectViewProjectNode" />
               <item name="projinda-rogue" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="projinda-rogue" type="b2602c69:ProjectViewProjectNode" />
-              <item name="projinda-rogue" type="462c0819:PsiDirectoryNode" />
-              <item name=".idea" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="projinda-rogue" type="b2602c69:ProjectViewProjectNode" />
-              <item name="projinda-rogue" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="projinda-rogue" type="b2602c69:ProjectViewProjectNode" />
@@ -426,18 +402,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="MapTest - 2018.05.07 at 16h 25m 23s.xml">
-      <configuration name="MapTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MapTest - 2018.05.07 at 16h 25m 27s.xml">
-      <configuration name="MapTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MapTest - 2018.05.07 at 16h 25m 34s.xml">
-      <configuration name="MapTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MapTest - 2018.05.07 at 16h 25m 48s.xml">
-      <configuration name="MapTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="MapTest - 2018.05.08 at 11h 58m 22s.xml">
       <configuration name="MapTest" configurationId="JUnit" />
     </history-entry>
@@ -456,13 +420,24 @@
     <history-entry file="MapTest_createPlayerShouldThrowExceptionIfTileIsOutsideBounds - 2018.05.08 at 12h 07m 53s.xml">
       <configuration name="MapTest.createPlayerShouldThrowExceptionIfTileIsOutsideBounds" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="MapTest_shouldAddPlayerToTileAtCorrectPosition - 2018.05.08 at 12h 16m 45s.xml">
+      <configuration name="MapTest.shouldAddPlayerToTileAtCorrectPosition" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MapTest_shouldAddPlayerToTileAtCorrectPosition - 2018.05.08 at 12h 18m 04s.xml">
+      <configuration name="MapTest.shouldAddPlayerToTileAtCorrectPosition" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MapTest_shouldAddPlayerToTileAtCorrectPosition - 2018.05.08 at 12h 18m 21s.xml">
+      <configuration name="MapTest.shouldAddPlayerToTileAtCorrectPosition" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MapTest_shouldAddPlayerToTileAtCorrectPosition - 2018.05.08 at 12h 18m 56s.xml">
+      <configuration name="MapTest.shouldAddPlayerToTileAtCorrectPosition" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
     <option name="totallyTimeSpent" value="41000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="709" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -877,21 +852,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Tile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="32" column="5" lean-forward="true" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
-          <folding>
-            <element signature="e#256#257#0" expanded="true" />
-            <element signature="e#292#293#0" expanded="true" />
-            <element signature="e#322#323#0" expanded="true" />
-            <element signature="e#349#350#0" expanded="true" />
-            <element signature="e#489#490#0" expanded="true" />
-            <element signature="e#518#519#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Game.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="36">
@@ -902,18 +862,6 @@
             <element signature="e#1173#1174#0" expanded="true" />
             <element signature="e#1269#1270#0" expanded="true" />
             <element signature="e#1296#1297#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Map.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="440" column="34" lean-forward="true" selection-start-line="440" selection-start-column="34" selection-end-line="440" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#10828#10829#0" expanded="true" />
-            <element signature="e#10865#10866#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -956,15 +904,46 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Player.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        <state relative-caret-position="75">
+          <caret line="5" column="39" selection-start-line="5" selection-start-column="39" selection-end-line="5" selection-end-column="39" />
+          <folding>
+            <element signature="e#161#162#0" expanded="true" />
+            <element signature="e#207#208#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Tile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="32" column="5" lean-forward="true" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
+          <folding>
+            <element signature="e#256#257#0" expanded="true" />
+            <element signature="e#292#293#0" expanded="true" />
+            <element signature="e#322#323#0" expanded="true" />
+            <element signature="e#349#350#0" expanded="true" />
+            <element signature="e#489#490#0" expanded="true" />
+            <element signature="e#518#519#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Map.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="442" column="22" lean-forward="true" selection-start-line="442" selection-start-column="22" selection-end-line="442" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#10828#10829#0" expanded="true" />
+            <element signature="e#10865#10866#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/MapTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="337" column="67" lean-forward="true" selection-start-line="337" selection-start-column="67" selection-end-line="337" selection-end-column="67" />
+        <state relative-caret-position="165">
+          <caret line="337" column="34" selection-start-line="337" selection-start-column="34" selection-end-line="337" selection-end-column="34" />
           <folding>
             <element signature="e#6027#6028#0" expanded="true" />
             <element signature="e#6061#6062#0" expanded="true" />
@@ -975,6 +954,9 @@
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/projinda-rogue.iml">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
   <component name="masterDetails">
