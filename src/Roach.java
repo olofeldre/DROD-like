@@ -12,75 +12,21 @@ public class Roach extends Enemy {
         graphics.fillOval(x - 5, y - 5, 10, 10);
     }
 
-    @Override
-	public void move(Direction d, Map map)
-	{
-		map.getTile(x, y).removeMoveable();
-		switch (d)
-		{
-			case UP:
-				y = y +1;
-
-			case DOWN:
-				y = y -1);
-
-			case LEFT:
-				x = x - 1
-
-			case RIGHT:
-				x = x + 1
-
-			case UPLEFT:
-				x -= 1;
-				y +=1;
-
-			case UPRIGHT:
-				x += 1;
-				y +=1;
-
-			case DOWNRIGHT:
-				 x += 1;
-				 y -= 1;
-
-			case DOWNLEFT:
-				x -= 1;
-				y -= 1;
-		}
-		map.getTile(x, y).setMovable(this);
-	}
-
-    @Override
 	public void act(int playerX, int playerY, Map map)
 	{
-		Direction d;
-		if (x> playerX&& y > playerY)
-		{
-			d = Direction.DOWNLEFT;
+		int xMove = (int)Math.signum((float)playerX - x);
+		int yMove = (int)Math.signum((float)playerY - y);
+
+		System.out.println(xMove);
+		System.out.println(yMove);
+
+		if(!tryMoveTo(x + xMove, y + yMove, map)) {
+			if(!tryMoveTo(x + xMove, y, map)) {
+				tryMoveTo(x, y + yMove, map);
+			}
 		}
 
-		else if (x> playerX&& y < playerY)
-		{
-			d = Direction.UPLEFT;
-		}
-
-		else if (x < playerX&& y < playerY)
-		{
-			d = Direction.UPRIGHT;
-		}
-		else if (x < playerX&& y > playerY)
-		{
-			d = Direction.DOWNRIGHT;
-		}
-		else if (x == playerX && y < playerY )
-		{
-			d = Direction.RIGHT;
-		}
-
-		else if (x == playerX && y < playerY )
-		{
-			d = Direction.LEFT;
-		}
-
+<<<<<<< HEAD
 		else if ( x < playerX && y == playerY)
 		{
 			d = Direction.UP;
@@ -162,5 +108,7 @@ public class Roach extends Enemy {
 			return false;
 		}
 		return true;
+=======
+>>>>>>> f10f4845be65dfdb356e64d99108b2ddd44bbd66
 	}
 }

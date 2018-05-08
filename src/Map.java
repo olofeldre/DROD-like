@@ -33,6 +33,8 @@ public class Map {
                 tileMatrix[i][j] = new Tile(false);
             }
         }
+
+        enemies = new LinkedList<>();
         random = new Random();
     }
 
@@ -448,6 +450,11 @@ public class Map {
 		Tile tile = getTile(x, y);
 		Movable movable = MovableMaker.create(type, x, y);
 		tile.setMovable(movable);
+
+		if(type == MovableType.ROACH) {
+			enemies.add((Enemy) movable);
+		}
+
 		return movable;
 	}
 
@@ -455,7 +462,7 @@ public class Map {
 	{
 		for(Enemy enemy: enemies)
 		{
-			enemy.act(playerX, playerY);
+			enemy.act(playerX, playerY, this);
 		}
 
 	}

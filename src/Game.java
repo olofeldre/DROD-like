@@ -21,8 +21,13 @@ public class Game extends JPanel {
 
 		JFrame gameFrame = FrameFactory.create(WINDOW_TITLE, WINDOW_WIDTH, WINDOW_HEIGHT);
 		Game game = new Game(gameFrame, testMap);
+		Keyboard keyboard = new Keyboard(game);
+		gameFrame.addKeyListener(keyboard);
+
 		game.setPlayer((Player) testMap.getTile(2, -3).getMovable());
 		game.start();
+
+
 	}
 
 	public static Map testMap() {
@@ -80,7 +85,23 @@ public class Game extends JPanel {
 		this.player = player;
 	}
 
-	public void keyTyped(KeyEvent e) {
+	/**
+	 * Move the player in the appropriate direction and update all enemies.
+	 * @param keyCode
+	 */
+	public void keyPressed(int keyCode) {
+		switch(keyCode) {
+            case KeyEvent.VK_8: player.move(Direction.UP, map); break;
+            case KeyEvent.VK_9: player.move(Direction.UPRIGHT, map); break;
+            case KeyEvent.VK_O: player.move(Direction.RIGHT, map); break;
+            case KeyEvent.VK_K: player.move(Direction.DOWN, map); break;
+            case KeyEvent.VK_L: player.move(Direction.DOWNRIGHT, map); break;
+            case KeyEvent.VK_U: player.move(Direction.LEFT, map); break;
+            case KeyEvent.VK_7: player.move(Direction.UPLEFT, map); break;
+            case KeyEvent.VK_J: player.move(Direction.DOWNLEFT, map); break;
+		}
 
+		map.updateEnemies(player.x, player.y);
+		repaint();
 	}
 }
