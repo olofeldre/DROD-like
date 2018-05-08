@@ -76,7 +76,6 @@ public class Map {
         indices[1] = newY;
         return indices;
     }
-	
 
     /**
      * Return whether the given coordinates correspond to a valid tile in the matrix.
@@ -404,10 +403,7 @@ public class Map {
 				}
 
 				if(tile.getMovable() != null) {
-				    System.out.println(x);
-				    System.out.println(y);
-				    Point2D position = getTileCenter(x, y, windowWidth, windowHeight);
-				    tile.getMovable().display(g, (int) position.getX(), (int) position.getY());
+				    tile.getMovable().display(g, x*tileWidth + tileWidth/2, y*tileHeight + tileHeight/2);
                 }
 			}
 		}
