@@ -15,18 +15,27 @@ public class Game extends JPanel {
 
     public static void main(String[] args)
 	{
-		Map testMap = new Map(20, 20);
-		testMap.partition();
-		System.out.println(testMap.roomString());
-		System.out.println(testMap);
+		Map testMap = testMap();
 
 		JFrame gameFrame = FrameFactory.create(WINDOW_TITLE, WINDOW_WIDTH, WINDOW_HEIGHT);
-
-		Player player = new Player(0,0);
-
 		Game game = new Game(gameFrame, testMap);
-		game.setPlayer(player);
+		game.setPlayer((Player) testMap.getTile(2, -3).getMovable());
 		game.start();
+	}
+
+	private static Map testMap() {
+    	Map map = new Map(10, 10);
+    	map.addHorizontalWall(-5, 4, 4);
+    	map.addHorizontalWall(-5, 4, -5);
+    	map.addVerticalWall(-5 ,4, -5);
+    	map.addVerticalWall(2, 3, -2);
+    	map.addVerticalWall(-4, -2, -2);
+    	map.addHorizontalWall(0, 1, 0);
+    	map.addVerticalWall(-4, -2, 1);
+
+    	map.createPlayer(2, -3);
+
+    	return map;
 	}
 
 	/**
@@ -57,7 +66,6 @@ public class Game extends JPanel {
 	public void paintComponent(Graphics g)
 	{
         map.draw(g, getWidth(), getHeight());
-        player.draw(g, getWidth(), getHeight(), map);
 	}
 
 	public void setPlayer(Player player)

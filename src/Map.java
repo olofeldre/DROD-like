@@ -267,8 +267,6 @@ public class Map {
 		//	System.out.println("Next row: " + yOffset);
 		}
 
-		System.out.println(STARTY + " " + (STARTY + height -1)+ " " +
-				" " + (STARTX));
 		//Add the walls in the top and left part of the screen.
 		addHorizontalWall(STARTX + 1, STARTX + width - 1,
 				STARTY + height - 1);
@@ -437,5 +435,12 @@ public class Map {
 	public boolean isWalkable(int x, int y)
 	{
 		return !getTile(x, y).isWall();
+	}
+
+	public Player createPlayer(int x, int y) {
+		Tile tile = getTile(x, y);
+		Player player = new Player();
+		tile.setMovable(player);
+		return player;
 	}
 }
