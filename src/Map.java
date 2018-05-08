@@ -33,6 +33,8 @@ public class Map {
                 tileMatrix[i][j] = new Tile(false);
             }
         }
+
+        enemies = new LinkedList<>();
         random = new Random();
     }
 

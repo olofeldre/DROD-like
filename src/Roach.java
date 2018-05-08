@@ -127,6 +127,7 @@ public class Roach extends Enemy {
 		}
 
 	}
+
 	private boolean tryMove(Direction d, Map map)
 	{
 		boolean ok = false;

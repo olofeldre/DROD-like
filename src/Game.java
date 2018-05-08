@@ -85,6 +85,10 @@ public class Game extends JPanel {
 		this.player = player;
 	}
 
+	/**
+	 * Move the player in the appropriate direction and update all enemies.
+	 * @param keyCode
+	 */
 	public void keyPressed(int keyCode) {
 		switch(keyCode) {
             case KeyEvent.VK_8: player.move(Direction.UP, map); break;
@@ -97,6 +101,7 @@ public class Game extends JPanel {
             case KeyEvent.VK_J: player.move(Direction.DOWNLEFT, map); break;
 		}
 
+		map.updateEnemies(player.x, player.y);
 		repaint();
 	}
 }
