@@ -96,7 +96,7 @@ public class Roach extends Enemy {
 				b = tryMove(Direction.UP, map);
 				if (b == false)
 				{
-					
+
 				}
 				if(b == false)
 				{
