@@ -2,18 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="542812e4-5218-4c53-a477-559d86cc2da6" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Keyboard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Enemy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Map.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Movable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Movable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MovableMaker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MovableMaker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PlayerDirection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Direction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Roach.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Roach.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Sword.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sword.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -93,8 +82,8 @@
       <file leaf-file-name="Map.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Map.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="296">
-              <caret line="406" column="42" selection-start-line="406" selection-start-column="42" selection-end-line="406" selection-end-column="42" />
+            <state relative-caret-position="218">
+              <caret line="407" column="90" selection-start-line="407" selection-start-column="90" selection-end-line="407" selection-end-column="90" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -856,8 +845,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Map.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="406" column="42" selection-start-line="406" selection-start-column="42" selection-end-line="406" selection-end-column="42" />
+        <state relative-caret-position="218">
+          <caret line="407" column="90" selection-start-line="407" selection-start-column="90" selection-end-line="407" selection-end-column="90" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -881,7 +870,7 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited />
+          <last-edited>No facets are configured</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -904,7 +893,7 @@
       </state>
       <state key="JdkListConfigurable.UI">
         <settings>
-          <last-edited>1.8</last-edited>
+          <last-edited>10</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
