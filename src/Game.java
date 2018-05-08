@@ -21,8 +21,13 @@ public class Game extends JPanel {
 
 		JFrame gameFrame = FrameFactory.create(WINDOW_TITLE, WINDOW_WIDTH, WINDOW_HEIGHT);
 		Game game = new Game(gameFrame, testMap);
+		Keyboard keyboard = new Keyboard(game);
+		gameFrame.addKeyListener(keyboard);
+
 		game.setPlayer((Player) testMap.getTile(2, -3).getMovable());
 		game.start();
+
+
 	}
 
 	public static Map testMap() {
@@ -80,7 +85,12 @@ public class Game extends JPanel {
 		this.player = player;
 	}
 
-	public void keyTyped(KeyEvent e) {
+	public void keyPressed(int keyCode) {
+		System.out.println(keyCode);
+		switch(keyCode) {
+			case KeyEvent.VK_O: player.move(Direction.RIGHT, map);
+		}
 
+		repaint();
 	}
 }

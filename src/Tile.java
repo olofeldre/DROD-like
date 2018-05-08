@@ -31,4 +31,8 @@ public class Tile {
     public Movable getMovable() {
         return movable;
     }
+
+    public void removeMovable() {
+        movable = null;
+    }
 }

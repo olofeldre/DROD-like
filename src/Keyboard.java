@@ -10,12 +10,12 @@ public class Keyboard implements KeyListener {
 
     @Override
     public void keyTyped(KeyEvent e) {
-        game.keyTyped(e);
+
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
-
+        game.keyPressed(e.getKeyCode());
     }
 
     @Override

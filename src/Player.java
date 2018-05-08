@@ -15,4 +15,26 @@ public class Player extends Movable {
 		graphics.drawOval(x - 5, y - 5, 10, 10);
 	}
 
+	public void move(Direction direction, Map map) {
+    	int newX = x;
+    	int newY = y;
+
+    	switch(direction) {
+			case LEFT: newX -= 1; break;
+			case RIGHT: newX += 1; break;
+			case UP: newY += 1; break;
+			case DOWN: newY -= 1; break;
+			case UPLEFT: newX -= 1; newY += 1; break;
+			case UPRIGHT: newX += 1; newY += 1; break;
+			case DOWNLEFT: newX -= 1; newY -= 1; break;
+			case DOWNRIGHT: newX += 1; newY -= 1; break;
+		}
+
+		if(!map.getTile(newX, newY).isWall()) {
+			map.getTile(x, y).removeMovable();
+    		x = newX;
+    		y = newY;
+    		map.getTile(x, y).setMovable(this);
+		}
+	}
 }

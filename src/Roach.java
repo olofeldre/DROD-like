@@ -15,22 +15,22 @@ public class Roach extends Enemy {
     @Override
 	public void act(int playerX, int playerY)
 	{
-		Direction d;
-		if (x> playerX&& y > playerY)
+		Direction d = Direction.LEFT;
+		if (x> playerX && y > playerY)
 		{
 			d = Direction.DOWNLEFT;
 		}
 
-		else if (x> playerX&& y < playerY)
+		else if (x> playerX && y < playerY)
 		{
 			d = Direction.UPLEFT;
 		}
 
-		else if (x < playerX&& y < playerY)
+		else if (x < playerX && y < playerY)
 		{
 			d = Direction.UPRIGHT;
 		}
-		else if (x < playerX&& y > playerY)
+		else if (x < playerX && y > playerY)
 		{
 			d = Direction.DOWNRIGHT;
 		}
