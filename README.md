@@ -6,7 +6,7 @@ Our project is a top down roguelike and turn-based, similar to another game call
 
 ### Game rules
 
-The game map is a grid and you can move in eight directions. There will be enemies on the map that move towards you   every time you make a move. The goal of the game is to kill all the enemies on the map. 
+The game map is a grid and you can move in eight directions. There will be enemies on the map that move towards you   every time you make a move. The goal of the game is to kill all the enemies on the map and traverse the maps. 
     
     
 ## How do i install and use the project?
