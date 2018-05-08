@@ -2,7 +2,7 @@
 
 ## What is the project about?
     
-Our project is a top down roguelike and turn-based. The game will be 2D.
+Our project is a top down roguelike and turn-based, similar to another game called [DROD](http://caravelgames.com/Articles/Games.html). The game will be 2D.
 
 ### Game rules
 
