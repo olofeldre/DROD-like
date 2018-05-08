@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.awt.geom.Point2D;
 import java.util.Random;
 
 /**
@@ -75,6 +76,8 @@ public class Map {
         indices[1] = newY;
         return indices;
     }
+
+    
 
     /**
      * Return whether the given coordinates correspond to a valid tile in the matrix.
@@ -400,6 +403,13 @@ public class Map {
 					g.setColor(tileColor);
 					g.fillRect(x*tileWidth + tileWidth / 2, y*tileHeight + tileHeight / 2,2, 2);
 				}
+
+				if(tile.getMovable() != null) {
+				    System.out.println(x);
+				    System.out.println(y);
+				    Point2D position = getTileCenter(x, y, windowWidth, windowHeight);
+				    tile.getMovable().display(g, (int) position.getX(), (int) position.getY());
+                }
 			}
 		}
 	}
@@ -439,7 +449,7 @@ public class Map {
 
 	public Movable createMovable(int x, int y, MovableType type) {
 		Tile tile = getTile(x, y);
-		Movable movable = MovableMaker.create(type);
+		Movable movable = MovableMaker.create(type, x, y);
 		tile.setMovable(movable);
 		return movable;
 	}

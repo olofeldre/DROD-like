@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
 
 /**
  * The main class for the application.
@@ -12,6 +13,7 @@ public class Game extends JPanel {
 	private JFrame frame;
 	private Map map;
 	private Player player;
+	private Keyboard keyboard;
 
     public static void main(String[] args)
 	{
@@ -73,5 +75,9 @@ public class Game extends JPanel {
 	public void setPlayer(Player player)
 	{
 		this.player = player;
+	}
+
+	public void keyTyped(KeyEvent e) {
+
 	}
 }
