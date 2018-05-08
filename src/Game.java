@@ -25,7 +25,7 @@ public class Game extends JPanel {
 		game.start();
 	}
 
-	private static Map testMap() {
+	public static Map testMap() {
     	Map map = new Map(10, 10);
     	map.addHorizontalWall(-5, 4, 4);
     	map.addHorizontalWall(-5, 4, -5);

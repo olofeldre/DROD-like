@@ -351,4 +351,24 @@ public class MapTest {
 		assertThat(movable.getType(), equalTo(MovableType.ROACH));
 	}
 
+	@Test
+	public void updateMovablesWorksInTestMap()
+	{
+		//Arrange
+		Map test = Game.testMap();
+
+		//Act
+		test.updateEnemies(2, -3);
+
+		//Assert
+		assertEquals(test.getTile(-3, -4).getMovable().getType(),
+				MovableType.ROACH);
+		assertEquals(test.getTile(-3, -3).getMovable().getType(),
+				MovableType.ROACH);
+		assertEquals(test.getTile(2, 1).getMovable().getType(),
+				MovableType.ROACH);
+
+
+	}
+
 }

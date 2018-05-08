@@ -1,6 +1,7 @@
 import java.awt.*;
 import java.awt.geom.Point2D;
 import java.util.Random;
+import java.util.LinkedList;
 
 /**
  * Map: This class should store information about the map and
@@ -13,6 +14,7 @@ public class Map {
     private Tile [][] tileMatrix;
 	private int [][] roomMatrix;
 	private Random random;
+	private LinkedList<Enemy> enemies;
 	/**
      * Construct the map by initializing the tile matrix of size width * height
      * that stores all information on the map.
@@ -447,6 +449,15 @@ public class Map {
 		Movable movable = MovableMaker.create(type, x, y);
 		tile.setMovable(movable);
 		return movable;
+	}
+
+	public void updateEnemies(int playerX, int playerY)
+	{
+		for(Enemy enemy: enemies)
+		{
+			enemy.act(playerX, playerY);
+		}
+
 	}
 
 }
