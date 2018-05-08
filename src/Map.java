@@ -450,6 +450,11 @@ public class Map {
 		Tile tile = getTile(x, y);
 		Movable movable = MovableMaker.create(type, x, y);
 		tile.setMovable(movable);
+
+		if(type == MovableType.ROACH) {
+			enemies.add((Enemy) movable);
+		}
+
 		return movable;
 	}
 
