@@ -10,7 +10,7 @@ The game map is a grid and you can move in eight directions. You have a sword yo
 
 ### Controls
 
-You use 
+You use these buttons to move your character:
 
 7 8 9
 
@@ -18,7 +18,7 @@ u i o
 
 j k l 
 
-To move and q, W to rotate the sword counter-clockwise and clockwise.
+And q, w to rotate the sword counter-clockwise and clockwise.
     
 ## How do i install and use the project?
   
