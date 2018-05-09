@@ -60,6 +60,14 @@ public class Game extends JPanel {
 		this.frame = frame;
 		this.map = map;
 		frame.add(this);
+
+		loadResources();
+	}
+
+	private void loadResources() {
+		Resource.loadImage("resources/images/player-sprite.png", "player");
+		Resource.loadImage("resources/images/roach-sprite.png", "roach");
+		Resource.loadImage("resources/images/sword-sprite.png", "sword");
 	}
 
 	/**

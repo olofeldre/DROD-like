@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 public class Sword extends Movable {
     public Sword(int x, int y) {
@@ -7,7 +8,8 @@ public class Sword extends Movable {
 
     @Override
     public void display(Graphics graphics, int x, int y) {
-
+        BufferedImage sprite = Resource.getImage("sword");
+        graphics.drawImage(sprite, x - sprite.getWidth(), y - sprite.getHeight(), null);
     }
 
 }

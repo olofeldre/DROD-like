@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.security.cert.X509Certificate;
 
 public class Roach extends Enemy {
@@ -9,8 +10,8 @@ public class Roach extends Enemy {
 
     @Override
     public void display(Graphics graphics, int x, int y) {
-        graphics.setColor(Color.RED);
-        graphics.fillOval(x - 5, y - 5, 10, 10);
+        BufferedImage sprite = Resource.getImage("roach");
+        graphics.drawImage(sprite, x - sprite.getWidth()/2, y - sprite.getHeight()/2, null);
     }
 
 	public void act(int playerX, int playerY, Map map)

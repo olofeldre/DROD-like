@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 /**
  * The game's player. It should be able to draw itself and move to different
@@ -17,7 +18,8 @@ public class Player extends Movable {
 
 	@Override
 	public void display(Graphics graphics, int x, int y) {
-		graphics.fillOval(x - 5, y - 5, 10, 10);
+    	BufferedImage sprite = Resource.getImage("player");
+		graphics.drawImage(sprite, x - sprite.getWidth()/2, y - sprite.getHeight()/2, null);
 	}
 
 	public void rotate(Direction right, Map map) {
