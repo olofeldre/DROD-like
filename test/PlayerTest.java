@@ -25,4 +25,20 @@ public class PlayerTest {
         assertThat(player.y, equalTo(previousY));
     }
 
+    @Test
+    public void rotateShouldChangeSwordPos()
+	{
+		player.rotate(Direction.RIGHT, map);
+		assertNotNull(map.getTile(3, -2).getMovable());
+
+	}
+
+	@Test
+	public void RotateLeftWorksNicely()
+	{
+		player.rotate(Direction.LEFT, map);
+		assertNotNull(map.getTile(1, -2).getMovable());
+	}
+
+
 }

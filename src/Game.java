@@ -99,6 +99,10 @@ public class Game extends JPanel {
             case KeyEvent.VK_U: player.move(Direction.LEFT, map); break;
             case KeyEvent.VK_7: player.move(Direction.UPLEFT, map); break;
             case KeyEvent.VK_J: player.move(Direction.DOWNLEFT, map); break;
+
+			//case KeyEvent.VK_Q: player.move(Direction.DOWNLEFT, map); break;
+			//case KeyEvent.VK_W: player.move(Direction.DOWNLEFT, map); break;
+
 		}
 
 		map.updateEnemies(player.x, player.y);
