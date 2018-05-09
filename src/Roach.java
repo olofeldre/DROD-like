@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.security.cert.X509Certificate;
 
 public class Roach extends Enemy {
     public Roach(int x, int y) {
@@ -14,57 +15,71 @@ public class Roach extends Enemy {
 
 	public void act(int playerX, int playerY, Map map)
 	{
-		int xMove = (int)Math.signum((float)playerX - x);
-		int yMove = (int)Math.signum((float)playerY - y);
+		// positive if player is right or above roach -o 0509
+		int xMove = (int) Math.signum((float) playerX - x);
+		int yMove = (int) Math.signum((float) playerY - y);
+
 
 		System.out.println(xMove);
 		System.out.println(yMove);
-
-		if(!tryMoveTo(x + xMove, y + yMove, map)) {
-			if(!tryMoveTo(x + xMove, y, map)) {
+		Direction d = Direction.UP;
+		boolean success = false;
+		int twoIfDiagonal = Math.abs(xMove) + Math.abs(yMove);
+		success = tryMoveTo(x + xMove, y + yMove, map);
+		if (success)
+		{
+			return;
+		}
+		switch (twoIfDiagonal)
+		{
+			// If moving diagonally is preferrable.
+			//O 0509
+			case 2:
+				success = tryMoveTo(x + xMove, y, map);
+				if (success)
+				{
+					return;
+				}
 				tryMoveTo(x, y + yMove, map);
-			}
-		}
+				return;
 
-<<<<<<< HEAD
-		else if ( x < playerX && y == playerY)
-		{
-			d = Direction.UP;
-		}
-		else if ( x > playerX && y == playerY)
-		{
-			d = Direction.DOWN;
-		}
-		boolean b = false;
-		switch (d)
-		{
-			case UP;
-				b = tryMove(Direction.UP, map);
-				if (b == false)
+			//If moving diagonally offers no advantage.
+			//O 0509
+			case 1:
+
+				switch (Math.abs(xMove))
 				{
+					//prefers vertical.
+					case 0:
+						success = tryMoveTo(x + 1, y + yMove, map);
+						if (success)
+						{
+							return;
+						}
+						success = tryMoveTo(x - 1, y + yMove, map);
+						return;
 
+						//prefers horizontal.
+					case 1:
+						success = tryMoveTo(x + xMove, y + 1, map);
+						if(success)
+						{
+							return;
+						}
+						tryMoveTo(x + xMove, y - 1, map);
+						return;
+					default:
+						throw new IllegalStateException("Error on move.");
 				}
-				if(b == false)
-				{
-
-				}
-			case DOWN:
-			case LEFT:
-			case RIGHT:
-			case UPLEFT:
-				tryMove(Direction.UP, map);
-
-			case UPRIGHT:
-				tryMove(Direction.UP, map);
-
-			case DOWNRIGHT:
-			case DOWNLEFT:
+			default:
+				return;
 		}
-
 	}
+
+
 	private boolean tryMove(Direction d, Map map)
 	{
-		boolean ok = false
+		boolean ok = false;
 		switch (d)
 		{
 			case UP:
@@ -90,7 +105,7 @@ public class Roach extends Enemy {
 			case DOWNLEFT:
 				ok= freeTile(map, x - 1, y - 1);
 		}
-		if ok
+		if (ok)
 		{
 			move(d, map);
 		}
@@ -108,7 +123,6 @@ public class Roach extends Enemy {
 			return false;
 		}
 		return true;
-=======
->>>>>>> f10f4845be65dfdb356e64d99108b2ddd44bbd66
+
 	}
 }

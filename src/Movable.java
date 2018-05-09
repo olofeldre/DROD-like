@@ -34,6 +34,14 @@ public abstract class Movable {
         return tryMoveTo(newX, newY, map);
     }
 
+	/**
+	 * Attempts to move the movable to the specified tile on the map provided.
+	 * If successful, the method returns true, otherwise false.
+	 * @param x new X of tile to move to.
+	 * @param y new Y of tile to move to.
+	 * @param map the map of the destination.
+	 * @return true if move was successful.
+	 */
     public boolean tryMoveTo(int x, int y, Map map) {
         System.out.println(tileFree(x, y, map));
         System.out.println(solid);
