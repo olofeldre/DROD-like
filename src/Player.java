@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 
 /**
@@ -6,20 +7,23 @@ import java.awt.image.BufferedImage;
  * tiles on the map.
  */
 public class Player extends Movable {
-	public Direction facing;
 
     public Player(int x, int y)
 	{
 		super(x, y);
 		this.type = MovableType.PLAYER;
-		facing = Direction.UP;
+		this.direction = Direction.UP;
 	}
 	
 
 	@Override
 	public void display(Graphics graphics, int x, int y) {
     	BufferedImage sprite = Resource.getImage("player");
-		graphics.drawImage(sprite, x - sprite.getWidth()/2, y - sprite.getHeight()/2, null);
+    	double drawAngle = -Math.toRadians(Angle.getAngle(direction));
+    	int centerX = x;
+    	int centerY = y;
+
+    	RenderRotate.renderSprite(graphics, centerX, centerY, drawAngle, sprite);
 	}
 
 	public void rotate(Direction right, Map map) {
