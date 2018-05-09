@@ -19,4 +19,8 @@ public class Player extends Movable {
 	public void display(Graphics graphics, int x, int y) {
 		graphics.fillOval(x - 5, y - 5, 10, 10);
 	}
+
+	public void rotate(Direction right, Map map) {
+    	//TODO
+	}
 }
