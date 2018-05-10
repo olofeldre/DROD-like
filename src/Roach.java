@@ -6,12 +6,14 @@ public class Roach extends Enemy {
     public Roach(int x, int y) {
         super(x,y);
         this.type = MovableType.ROACH;
+        this.direction = Direction.DOWN;
     }
 
     @Override
     public void display(Graphics graphics, int x, int y) {
         BufferedImage sprite = Resource.getImage("roach");
-        graphics.drawImage(sprite, x - sprite.getWidth()/2, y - sprite.getHeight()/2, null);
+        RenderRotate.renderSprite(graphics, x, y, -Math.toRadians(Angle.getAngle(direction)), sprite);
+
     }
 
 	public void act(int playerX, int playerY, Map map)

@@ -33,10 +33,46 @@ public abstract class Movable {
         }
 
         if(tryMoveTo(newX, newY, map)) {
-            this.direction = direction;
             return true;
         }
         return false;
+    }
+
+    private Direction getDirectionFromMovement(int x, int y) {
+        Direction direction = Direction.RIGHT;
+
+        if(x == 1) {
+            if(y == 1) {
+                direction = Direction.UPRIGHT;
+            }
+            else if(y == -1) {
+                direction = Direction.DOWNRIGHT;
+            }
+            else if(y == 0) {
+                direction = Direction.RIGHT;
+            }
+        }
+        else if(x == -1) {
+            if(y == 1) {
+                direction = Direction.UPLEFT;
+            }
+            else if(y == -1) {
+                direction = Direction.DOWNLEFT;
+            }
+            else if(y == 0) {
+                direction = Direction.LEFT;
+            }
+        }
+        else {
+            if(y == 1) {
+                direction = Direction.UP;
+            }
+            else if(y == -1) {
+                direction = Direction.DOWN;
+            }
+        }
+
+        return direction;
     }
 
 	/**
@@ -48,11 +84,14 @@ public abstract class Movable {
 	 * @return true if move was successful.
 	 */
     public boolean tryMoveTo(int x, int y, Map map) {
+        this.direction = getDirectionFromMovement(x - this.x, y - this.y);
+
         if(tileFree(x, y, map) || !solid) {
             map.getTile(this.x, this.y).removeMovable();
             this.x = x;
             this.y = y;
             map.getTile(x, y).setMovable(this);
+
             return true;
         }
 

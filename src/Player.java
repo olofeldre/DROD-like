@@ -21,11 +21,7 @@ public class Player extends Movable {
 	@Override
 	public void display(Graphics graphics, int x, int y) {
     	BufferedImage sprite = Resource.getImage("player");
-    	double drawAngle = -Math.toRadians(Angle.getAngle(direction));
-    	int centerX = x;
-    	int centerY = y;
-
-    	RenderRotate.renderSprite(graphics, centerX, centerY, drawAngle, sprite);
+		RenderRotate.renderSprite(graphics, x, y, -Math.toRadians(Angle.getAngle(direction)), sprite);
 	}
 
 	public void rotate(Direction dir, Map map) {
