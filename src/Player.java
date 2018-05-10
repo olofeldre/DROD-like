@@ -7,6 +7,8 @@ import java.awt.image.BufferedImage;
  * tiles on the map.
  */
 public class Player extends Movable {
+	private int angle = 0;
+	private Sword sword;
 
     public Player(int x, int y)
 	{
@@ -26,7 +28,7 @@ public class Player extends Movable {
     	RenderRotate.renderSprite(graphics, centerX, centerY, drawAngle, sprite);
 	}
 
-	public void rotate(Direction right, Map map) {
-    	//TODO
+	public void rotate(Direction dir, Map map) {
+		//TODO
 	}
 }

@@ -4,6 +4,7 @@ import java.awt.image.BufferedImage;
 public class Sword extends Movable {
     public Sword(int x, int y) {
         super(x, y);
+        this.solid = false;
     }
 
     @Override
