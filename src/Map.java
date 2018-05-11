@@ -448,7 +448,7 @@ public class Map {
 
 	public Movable createMovable(int x, int y, MovableType type) {
 		Tile tile = getTile(x, y);
-		Movable movable = MovableMaker.create(type, x, y);
+		Movable movable = MovableMaker.create(type, x, y, this);
 		tile.setMovable(movable);
 
 		if(type == MovableType.ROACH) {

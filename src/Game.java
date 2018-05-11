@@ -47,7 +47,6 @@ public class Game extends JPanel {
 		map.createMovable(-4,-3, MovableType.ROACH);
 		map.createMovable(-3,-4, MovableType.ROACH);
 
-
     	return map;
 	}
 
