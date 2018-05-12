@@ -9,6 +9,8 @@ public class Game extends JPanel {
 	public static final int WINDOW_WIDTH = 500;
 	public static final int WINDOW_HEIGHT = 500;
 	public static final String WINDOW_TITLE = "Rogue";
+	private static final Font smallText = new Font("arial", Font.PLAIN, 25);
+	private static final Font largeText = new Font("arial", Font.PLAIN, 50);
 
 	private JFrame frame;
 	private Map map;
@@ -25,6 +27,11 @@ public class Game extends JPanel {
 
 		game.setPlayer((Player) testMap.getMovable(2, -3));
 		game.start();
+	}
+
+	public void build() {
+    	map = testMap();
+		setPlayer((Player) map.getMovable(2, -3));
 	}
 
 	public static Map testMap() {
@@ -88,10 +95,13 @@ public class Game extends JPanel {
 		else {
 			g.setColor(Color.BLACK);
 			g.fillRect(0, 0, getWidth(), getHeight());
-			Font font = new Font("arial", Font.PLAIN, 50);
 			g.setColor(Color.WHITE);
-			g.setFont(font);
+			g.setFont(largeText);
 			g.drawString("You died", getWidth()/2 - 100, getHeight()/2);
+
+			g.setFont(smallText);
+			g.drawString("Press R to try again", getWidth()/2 - 100, getHeight()/2 + 100);
+
 		}
 	}
 
@@ -119,6 +129,7 @@ public class Game extends JPanel {
 			case KeyEvent.VK_Q: player.rotate(Direction.LEFT, map); break;
 			case KeyEvent.VK_W: player.rotate(Direction.RIGHT, map); break;
 			case KeyEvent.VK_I: break;
+			case KeyEvent.VK_R: build();
 			default: update = false;
 
 		}
