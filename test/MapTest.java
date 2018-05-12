@@ -349,7 +349,7 @@ public class MapTest {
 	public void updateMovablesWorksInTestMap()
 	{
 		//Arrange
-		Map test = Game.testMap();
+		Map test = MapGenerator.testMap();
 
 		//Act
 		test.updateEnemies(2, -3);

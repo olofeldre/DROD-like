@@ -21,11 +21,11 @@ public class Angle {
             case 0: direction = Direction.RIGHT; break;
             case 90: direction = Direction.UP; break;
             case 180: direction = Direction.LEFT; break;
-            case 270: direction = Direction.DOWN; break;
             case 45: direction = Direction.UPRIGHT; break;
             case 135: direction = Direction.UPLEFT; break;
             case 225: direction = Direction.DOWNLEFT; break;
             case 315: direction = Direction.DOWNRIGHT; break;
+            case 270: direction = Direction.DOWN; break;
         }
 
         return direction;

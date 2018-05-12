@@ -33,10 +33,19 @@ public class Player extends Movable {
 		map.removeMovable(x + relativeSwordPos.x, y + relativeSwordPos.y);
 
 		if(tileFree(newPos.x, newPos.y, map)) {
+			Movable movable = map.getMovable(newPos.x + relativeSwordPos.x, newPos.y + relativeSwordPos.y);
+			if(movable != null && movable.type == MovableType.ROACH) {
+				Enemy enemy = (Enemy) movable;
+				enemy.kill();
+				map.removeEnemy(enemy);
+			}
+
 			super.move(direction, map);
 			map.setMovable(x + relativeSwordPos.x, y + relativeSwordPos.y, sword);
 			sword.x = x + relativeSwordPos.x;
 			sword.y = y + relativeSwordPos.y;
+
+
 			return true;
 		}
 
@@ -56,6 +65,7 @@ public class Player extends Movable {
 
 		map.removeMovable(x + relativeSwordPos.x, y + relativeSwordPos.y);
 		sword.setAngle(angle);
+
 		Point newPos = getNewPosition(Angle.getDirection(angle));
 		relativeSwordPos.x = newPos.x - x;
 		relativeSwordPos.y = newPos.y - y;

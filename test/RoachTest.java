@@ -13,7 +13,7 @@ public class RoachTest {
 
     @Before
     public void setup() {
-        map = Game.testMap();
+        map = MapGenerator.testMap();
         roach = (Roach) map.getTile(2, 2).getMovable();
     }
 
