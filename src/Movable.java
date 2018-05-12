@@ -18,6 +18,15 @@ public abstract class Movable {
     }
 
     public boolean move(Direction direction, Map map) {
+        Point newPos = getNewPosition(direction);
+
+        if(tryMoveTo(newPos.x, newPos.y, map)) {
+            return true;
+        }
+        return false;
+    }
+
+    protected Point getNewPosition(Direction direction) {
         int newX = x;
         int newY = y;
 
@@ -32,10 +41,7 @@ public abstract class Movable {
             case DOWNRIGHT: newX += 1; newY -= 1; break;
         }
 
-        if(tryMoveTo(newX, newY, map)) {
-            return true;
-        }
-        return false;
+        return new Point(newX, newY);
     }
 
     private Direction getDirectionFromMovement(int x, int y) {
@@ -84,22 +90,26 @@ public abstract class Movable {
 	 * @return true if move was successful.
 	 */
     public boolean tryMoveTo(int x, int y, Map map) {
+
         this.direction = getDirectionFromMovement(x - this.x, y - this.y);
 
         if(tileFree(x, y, map) || !solid) {
-            map.getTile(this.x, this.y).removeMovable();
-            this.x = x;
-            this.y = y;
-            map.getTile(x, y).setMovable(this);
-
+            setPosition(x, y, map);
             return true;
         }
 
         return false;
     }
 
-    private boolean tileFree(int x, int y, Map map) {
-        if (map.getTile(x, y).isWall() || map.getTile(x, y).getMovable() != null)
+    public void setPosition(int x, int y, Map map) {
+        map.removeMovable(this.x, this.y);
+        this.x = x;
+        this.y = y;
+        map.setMovable(x, y, this);
+    }
+
+    protected boolean tileFree(int x, int y, Map map) {
+        if (map.getTile(x, y).isWall() || map.getMovable(x, y) != null)
         {
             return false;
         }

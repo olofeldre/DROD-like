@@ -458,6 +458,18 @@ public class Map {
 		return movable;
 	}
 
+	public Movable getMovable(int x, int y) {
+		return getTile(x, y).getMovable();
+	}
+
+	public void removeMovable(int x, int y) {
+		getTile(x, y).setMovable(null);
+	}
+
+	public void setMovable(int x, int y, Movable movable) {
+		getTile(x, y).setMovable(movable);
+	}
+
 	public void updateEnemies(int playerX, int playerY)
 	{
 		for(Enemy enemy: enemies)

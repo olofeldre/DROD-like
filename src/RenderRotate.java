@@ -4,18 +4,16 @@ import java.awt.image.BufferedImage;
 
 public class RenderRotate {
 
-    public static void renderSprite(Graphics g, int centerX, int centerY, double angle, BufferedImage sprite) {
+    public static void renderSprite(Graphics graphics, int x, int y, double angle, BufferedImage sprite) {
 
-        Graphics2D gr = (Graphics2D) g;
-        AffineTransform transform = gr.getTransform();
+        Graphics2D g = (Graphics2D) graphics;
+        AffineTransform transform = g.getTransform();
 
-        gr.translate(centerX, centerY);
-        gr.rotate(angle);
-        gr.translate(-centerX, -centerY);
+        g.setColor(Color.BLUE);
+        g.fillRect(x, y, 2, 2);
 
-        gr.drawImage(sprite,  centerX - sprite.getWidth() / 2, centerY - sprite.getHeight() / 2, null);
-
-        gr.setTransform(transform);
+        g.rotate(angle, x, y);
+        g.drawImage(sprite, x - sprite.getWidth() / 2,  y - sprite.getHeight() / 2, null);
+        g.setTransform(transform);
     }
-
 }

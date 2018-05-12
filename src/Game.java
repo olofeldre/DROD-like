@@ -13,7 +13,6 @@ public class Game extends JPanel {
 	private JFrame frame;
 	private Map map;
 	private Player player;
-	private Keyboard keyboard;
 
     public static void main(String[] args)
 	{
@@ -24,10 +23,8 @@ public class Game extends JPanel {
 		Keyboard keyboard = new Keyboard(game);
 		gameFrame.addKeyListener(keyboard);
 
-		game.setPlayer((Player) testMap.getTile(2, -3).getMovable());
+		game.setPlayer((Player) testMap.getMovable(2, -3));
 		game.start();
-
-
 	}
 
 	public static Map testMap() {
@@ -98,6 +95,7 @@ public class Game extends JPanel {
 	 * @param keyCode
 	 */
 	public void keyPressed(int keyCode) {
+		boolean update = true;
 		switch(keyCode) {
             case KeyEvent.VK_8: player.move(Direction.UP, map); break;
             case KeyEvent.VK_9: player.move(Direction.UPRIGHT, map); break;
@@ -108,12 +106,16 @@ public class Game extends JPanel {
             case KeyEvent.VK_7: player.move(Direction.UPLEFT, map); break;
             case KeyEvent.VK_J: player.move(Direction.DOWNLEFT, map); break;
 
-			//case KeyEvent.VK_Q: player.move(Direction.DOWNLEFT, map); break;
-			//case KeyEvent.VK_W: player.move(Direction.DOWNLEFT, map); break;
+			case KeyEvent.VK_Q: player.rotate(Direction.LEFT, map); break;
+			case KeyEvent.VK_W: player.rotate(Direction.RIGHT, map); break;
+			default: update = false;
 
 		}
 
-		map.updateEnemies(player.x, player.y);
+		if(update) {
+			map.updateEnemies(player.x, player.y);
+		}
+
 		repaint();
 	}
 }
