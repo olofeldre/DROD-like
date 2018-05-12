@@ -82,7 +82,17 @@ public class Game extends JPanel {
 	 */
 	public void paintComponent(Graphics g)
 	{
-        map.draw(g, getWidth(), getHeight());
+		if(player.alive) {
+			map.draw(g, getWidth(), getHeight());
+		}
+		else {
+			g.setColor(Color.BLACK);
+			g.fillRect(0, 0, getWidth(), getHeight());
+			Font font = new Font("arial", Font.PLAIN, 50);
+			g.setColor(Color.WHITE);
+			g.setFont(font);
+			g.drawString("You died", getWidth()/2 - 100, getHeight()/2);
+		}
 	}
 
 	public void setPlayer(Player player)

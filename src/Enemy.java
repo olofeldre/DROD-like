@@ -1,6 +1,4 @@
 public abstract class Enemy extends Movable {
-    protected boolean alive = true;
-
     public Enemy(int x, int y) {
         super(x,y);
     }

@@ -7,6 +7,7 @@ public abstract class Movable {
     protected int y;
     protected boolean solid = true;
     protected Direction direction = Direction.RIGHT;
+    protected boolean alive = true;
 
     public Movable(int x, int y) {
         this.x = x;

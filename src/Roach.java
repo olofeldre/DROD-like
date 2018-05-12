@@ -22,6 +22,13 @@ public class Roach extends Enemy {
 		int xMove = (int) Math.signum((float) playerX - x);
 		int yMove = (int) Math.signum((float) playerY - y);
 
+		Movable movable = map.getMovable(x + xMove, y + yMove);
+
+		if(movable != null && movable.type == MovableType.PLAYER) {
+			movable.alive = false;
+			setPosition(x + xMove, y + yMove, map);
+		}
+
 		Direction d = Direction.UP;
 		boolean success = false;
 		int twoIfDiagonal = Math.abs(xMove) + Math.abs(yMove);
