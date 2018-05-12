@@ -23,7 +23,6 @@ public class Player extends Movable {
 
 	@Override
 	public void display(Graphics graphics, int x, int y) {
-    	System.out.println(sword.x + ", " + sword.y);
     	BufferedImage sprite = Resource.getImage("player");
 		RenderRotate.renderSprite(graphics, x, y, -Math.toRadians(angle), sprite);
 	}
@@ -31,21 +30,17 @@ public class Player extends Movable {
 	public boolean move(Direction direction, Map map) {
 
 		Point newPos = getNewPosition(direction);
-		Tile newTile = map.getTile(newPos.x, newPos.y);
-		Movable movable = map.getMovable(newPos.x, newPos.y);
-
-		System.out.println("moving");
-
 		map.removeMovable(x + relativeSwordPos.x, y + relativeSwordPos.y);
 
 		if(tileFree(newPos.x, newPos.y, map)) {
 			super.move(direction, map);
 			map.setMovable(x + relativeSwordPos.x, y + relativeSwordPos.y, sword);
+			sword.x = x + relativeSwordPos.x;
+			sword.y = y + relativeSwordPos.y;
 			return true;
 		}
 
 		map.setMovable(x + relativeSwordPos.x, y + relativeSwordPos.y, sword);
-
 		return false;
 	}
 
@@ -64,6 +59,14 @@ public class Player extends Movable {
 		Point newPos = getNewPosition(Angle.getDirection(angle));
 		relativeSwordPos.x = newPos.x - x;
 		relativeSwordPos.y = newPos.y - y;
+
+
+		Movable previous = map.getMovable(x, y);
+
+		if(previous != null && previous.type == MovableType.ROACH) {
+			Enemy enemy = (Enemy)previous;
+			enemy.alive = false;
+		}
 
 		sword.setPosition(newPos.x, newPos.y, map);
     }

@@ -108,6 +108,7 @@ public class Game extends JPanel {
 
 			case KeyEvent.VK_Q: player.rotate(Direction.LEFT, map); break;
 			case KeyEvent.VK_W: player.rotate(Direction.RIGHT, map); break;
+			case KeyEvent.VK_I: break;
 			default: update = false;
 
 		}
