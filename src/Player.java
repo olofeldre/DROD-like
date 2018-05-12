@@ -34,12 +34,17 @@ public class Player extends Movable {
 		Tile newTile = map.getTile(newPos.x, newPos.y);
 		Movable movable = map.getMovable(newPos.x, newPos.y);
 
-		if(!newTile.isWall() && (movable == null || movable.type == MovableType.SWORD)) {
-			map.removeMovable(x + relativeSwordPos.x, y + relativeSwordPos.y);
+		System.out.println("moving");
+
+		map.removeMovable(x + relativeSwordPos.x, y + relativeSwordPos.y);
+
+		if(tileFree(newPos.x, newPos.y, map)) {
 			super.move(direction, map);
 			map.setMovable(x + relativeSwordPos.x, y + relativeSwordPos.y, sword);
 			return true;
 		}
+
+		map.setMovable(x + relativeSwordPos.x, y + relativeSwordPos.y, sword);
 
 		return false;
 	}
@@ -52,9 +57,14 @@ public class Player extends Movable {
 			angle -= 45;
 		}
 
+		angle = Math.floorMod(angle, 360);
+
 		map.removeMovable(x + relativeSwordPos.x, y + relativeSwordPos.y);
 		sword.setAngle(angle);
 		Point newPos = getNewPosition(Angle.getDirection(angle));
+		relativeSwordPos.x = newPos.x - x;
+		relativeSwordPos.y = newPos.y - y;
+
 		sword.setPosition(newPos.x, newPos.y, map);
     }
 

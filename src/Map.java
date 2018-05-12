@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.awt.geom.Point2D;
+import java.util.Iterator;
 import java.util.Random;
 import java.util.LinkedList;
 
@@ -470,13 +471,30 @@ public class Map {
 		getTile(x, y).setMovable(movable);
 	}
 
+	public void removeEnemy(Enemy enemy) {
+		enemies.remove(enemy);
+	}
+
 	public void updateEnemies(int playerX, int playerY)
 	{
 		for(Enemy enemy: enemies)
 		{
-			enemy.act(playerX, playerY, this);
+			if(enemy.isAlive()) {
+				enemy.act(playerX, playerY, this);
+			}
 		}
 
+
+		Iterator<Enemy> iterator = enemies.iterator();
+
+		while(iterator.hasNext()) {
+			Enemy e = iterator.next();
+
+			if(!e.isAlive()) {
+				removeMovable(e.x, e.y);
+				iterator.remove();
+			}
+		}
 	}
 
 }
