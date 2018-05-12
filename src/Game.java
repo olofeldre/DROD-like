@@ -106,9 +106,19 @@ public class Game extends JPanel {
             case KeyEvent.VK_7: player.move(Direction.UPLEFT, map); break;
             case KeyEvent.VK_J: player.move(Direction.DOWNLEFT, map); break;
 
+			case KeyEvent.VK_NUMPAD8: player.move(Direction.UP, map); break;
+			case KeyEvent.VK_NUMPAD9: player.move(Direction.UPRIGHT, map); break;
+			case KeyEvent.VK_NUMPAD6: player.move(Direction.RIGHT, map); break;
+			case KeyEvent.VK_NUMPAD2: player.move(Direction.DOWN, map); break;
+			case KeyEvent.VK_NUMPAD3: player.move(Direction.DOWNRIGHT, map); break;
+			case KeyEvent.VK_NUMPAD4: player.move(Direction.LEFT, map); break;
+			case KeyEvent.VK_NUMPAD7: player.move(Direction.UPLEFT, map); break;
+			case KeyEvent.VK_NUMPAD1: player.move(Direction.DOWNLEFT, map); break;
+
 			case KeyEvent.VK_Q: player.rotate(Direction.LEFT, map); break;
 			case KeyEvent.VK_W: player.rotate(Direction.RIGHT, map); break;
 			case KeyEvent.VK_I: break;
+			case KeyEvent.VK_NUMPAD5: break;
 			case KeyEvent.VK_R: build();
 			default: update = false;
 
