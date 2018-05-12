@@ -10,4 +10,10 @@ public abstract class Enemy extends Movable {
     public boolean isAlive() {
         return alive;
     }
+
+    protected void kill() {
+        System.out.println("Enemy killed");
+        this.alive = false;
+    }
+
 }

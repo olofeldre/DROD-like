@@ -60,12 +60,12 @@ public class Player extends Movable {
 		relativeSwordPos.x = newPos.x - x;
 		relativeSwordPos.y = newPos.y - y;
 
-
-		Movable previous = map.getMovable(x, y);
+		Movable previous = map.getMovable(newPos.x, newPos.y);
 
 		if(previous != null && previous.type == MovableType.ROACH) {
 			Enemy enemy = (Enemy)previous;
-			enemy.alive = false;
+			enemy.kill();
+			map.removeEnemy(enemy);
 		}
 
 		sword.setPosition(newPos.x, newPos.y, map);

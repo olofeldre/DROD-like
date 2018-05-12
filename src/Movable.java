@@ -97,24 +97,17 @@ public abstract class Movable {
             setPosition(x, y, map);
             return true;
         }
-        else {
-            if(type == MovableType.ROACH) {
-                Movable movable = map.getMovable(x, y);
-                if(movable != null && movable.type == MovableType.SWORD && !map.getTile(x, y).isWall()) {
-                    map.removeMovable(this.x, this.y);
-                    Enemy enemy = (Enemy)this;
-                    enemy.alive = false;
 
-                    return false;
-                }
-            }
-        }
         return false;
     }
 
     public void setPosition(int x, int y, Map map) {
+        Movable movable = map.getMovable(this.x, this.y);
 
-        map.removeMovable(this.x, this.y);
+        if(movable == this) {
+            map.removeMovable(this.x, this.y);
+        }
+
         this.x = x;
         this.y = y;
 
