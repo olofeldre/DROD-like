@@ -17,16 +17,17 @@ public class Game extends JPanel {
 
     public static void main(String[] args)
 	{
-		Map testMap = testMap();
+		Map map = new Map(50, 50);
+		map.partition();
 
-		JFrame gameFrame = FrameFactory.create(WINDOW_TITLE, WINDOW_WIDTH, WINDOW_HEIGHT);
-		Game game = new Game(gameFrame, testMap);
-		Keyboard keyboard = new Keyboard(game);
-		gameFrame.addKeyListener(keyboard);
+		//JFrame gameFrame = FrameFactory.create(WINDOW_TITLE, WINDOW_WIDTH, WINDOW_HEIGHT);
+		//Game game = new Game(gameFrame, map);
+		//Keyboard keyboard = new Keyboard(game);
+		//gameFrame.addKeyListener(keyboard);
 
-		game.setPlayer((Player) testMap.getTile(2, -3).getMovable());
-		game.start();
-
+		//game.setPlayer((Player) map.getTile(2, -3).getMovable());
+		//game.start();
+		System.out.println(map);
 
 	}
 

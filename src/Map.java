@@ -1,7 +1,9 @@
 import java.awt.*;
 import java.awt.geom.Point2D;
+import java.util.HashSet;
 import java.util.Random;
 import java.util.LinkedList;
+import java.util.ArrayList;
 
 /**
  * Map: This class should store information about the map and
@@ -15,6 +17,7 @@ public class Map {
 	private int [][] roomMatrix;
 	private Random random;
 	private LinkedList<Enemy> enemies;
+	private ArrayList<Wall> walls;
 	/**
      * Construct the map by initializing the tile matrix of size width * height
      * that stores all information on the map.
@@ -36,6 +39,7 @@ public class Map {
 
         enemies = new LinkedList<>();
         random = new Random();
+        walls = new ArrayList<>();
     }
 
     /**
@@ -178,6 +182,12 @@ public class Map {
 		{
 			getTile(from + currentXOffset, row).setType(true);
 		}
+
+		if (row == - width/2)
+		{
+			return;
+		}
+		walls.add(new Wall(from,  to, row, false));
 	}
 
 	/**
@@ -208,6 +218,28 @@ public class Map {
 		{
 			getTile(column, from + currentYOffset).setType(true);
 		}
+		int maxCol = height / 2;
+		if (height % 2 == 0)
+		{
+			maxCol -= 1;
+		}
+		if (column == maxCol)
+		{
+			return;
+		}
+
+		//Make sure the wall doesn't leak into the bottom of the map.
+		//That can cause doors to create a hole there.
+		//TODO:
+		//Make a unit test for this case.
+		// -O 0513
+		if (from == - height / 2)
+		{
+			walls.add(new Wall(from + 1, to, column, true));
+			return;
+		}
+		walls.add(new Wall(from,  to, column, true));
+
 	}
 
 	/**
@@ -276,6 +308,10 @@ public class Map {
 		addHorizontalWall(STARTX + 1, STARTX + width - 1,
 				STARTY + height - 1);
 		addVerticalWall(STARTY, STARTY + height - 1, STARTX);
+		walls.remove(walls.size() -1);
+		walls.remove(walls.size() -1);
+
+		doors(roomNumber - 1);
 
 	}
 
@@ -320,6 +356,35 @@ public class Map {
 		}
 	}
 
+	private void doors(int maxNo)
+	{
+		Random random = new Random();
+		HashGraph connections = new HashGraph(maxNo);
+		int topWall = walls.size() - 1;
+		GraphCalculations gc = new GraphCalculations();
+		Wall currentWall;
+		int iterations = 0;
+		while (gc.components(connections) > 1)
+		{
+			int randomWallIndex = random.nextInt(topWall);
+			currentWall = walls.get(randomWallIndex);
+			int[] coordinates = currentWall.getRandomWallCoordinate();
+			getTile(coordinates[0], coordinates[1]).setType(false);
+			Integer [] neighbours = getNeighborRooms(coordinates[0], coordinates[1]);
+			for (int room : neighbours)
+			{
+				for(int anotherRoom : neighbours)
+				{
+					connections.addBi(room - 1, anotherRoom - 1);
+				}
+			}
+			if (iterations > 100)
+			{
+				throw new IllegalStateException("To many iterations long!");
+			}
+		}
+
+	}
 
 
 	//This function creates rooms. It also adds walls in their bottom-right bit.
@@ -353,6 +418,56 @@ public class Map {
 		int[] index = convertToIndex(x, y);
 
 		return roomMatrix[index[0]][index[1]];
+	}
+
+	public Integer[] getNeighborRooms(int x, int y)
+	{
+		HashSet<Integer> neighbors = new HashSet<Integer>();
+
+		int currentRoom = getRoom(x, y);
+		neighbors.add(currentRoom);
+
+		//up
+		neighbors.add ( getWalkyRoom(x, y + 1));
+		//upleft
+		neighbors.add ( getWalkyRoom(x - 1, y + 1));
+		//upright
+		neighbors.add ( getWalkyRoom(x + 1, y + 1));
+		//right
+		neighbors.add ( getWalkyRoom(x +1, y ));
+		//left
+		neighbors.add (  getWalkyRoom(x -1, y));
+		//downleft
+		neighbors.add ( getWalkyRoom(x - 1, y - 1));
+		//down
+		neighbors.add (  getWalkyRoom(x, y - 1));
+		//downright
+		neighbors.add (  getWalkyRoom(x + 1, y - 1));
+
+		neighbors.remove(-1);
+		Integer[] returnArray = new Integer[neighbors.size()];
+		return neighbors.toArray(returnArray);
+	}
+
+	private int getWalkyRoom(int x, int y)
+	{
+		int roomNo;
+		try
+		{
+			 roomNo = getRoom(x, y);
+		}
+		catch(IndexOutOfBoundsException o)
+		{
+			return -1;
+		}
+		if(isWalkable(x, y))
+		{
+			return roomNo;
+		}
+		else
+		{
+			return -1;
+		}
 	}
 
 	public String roomString()
@@ -466,5 +581,7 @@ public class Map {
 		}
 
 	}
+
+
 
 }

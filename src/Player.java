@@ -13,10 +13,16 @@ public class Player extends Movable {
 		this.type = MovableType.PLAYER;
 		facing = Direction.UP;
 	}
-	
+
 
 	@Override
 	public void display(Graphics graphics, int x, int y) {
 		graphics.fillOval(x - 5, y - 5, 10, 10);
+	}
+
+	public void rotate(Direction d, Map m)
+	{
+		//Todo
+		return;
 	}
 }
