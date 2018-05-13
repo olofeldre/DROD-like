@@ -1,4 +1,5 @@
 public class MapGenerator {
+	private int[] playerPos;
 
     public static Map testMap() {
         Map map = new Map(10, 10);
@@ -19,4 +20,21 @@ public class MapGenerator {
 
         return map;
     }
+
+    public MapGenerator()
+	{}
+
+    public Map randomMap()
+	{
+		Map map = new Map(20, 20);
+		map.partition();
+		playerPos = map.addMovables();
+
+		return map;
+	}
+
+	public int[] getPlayerPos()
+	{
+		return playerPos;
+	}
 }

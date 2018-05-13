@@ -27,13 +27,7 @@ public class Player extends Movable {
 		RenderRotate.renderSprite(graphics, x, y, -Math.toRadians(angle), sprite);
 	}
 
-<<<<<<< HEAD
-	public void rotate(Direction d, Map m)
-	{
-		//Todo
-		return;
-	}
-=======
+
 	public boolean move(Direction direction, Map map) {
 
 		Point newPos = getNewPosition(direction);
@@ -88,5 +82,4 @@ public class Player extends Movable {
 		sword.setPosition(newPos.x, newPos.y, map);
     }
 
->>>>>>> fbb9dc6fccd152ebc0cc912f16e84ba0314e0640
 }

@@ -18,7 +18,7 @@ public class Game extends JPanel {
 
     public static void main(String[] args)
 	{
-<<<<<<< HEAD
+
 		Map map = new Map(50, 50);
 		map.partition();
 
@@ -31,17 +31,22 @@ public class Game extends JPanel {
 		//game.start();
 		System.out.println(map);
 
-=======
-		Map testMap = MapGenerator.testMap();
+
+		//Map testMap = MapGenerator.testMap();
+		MapGenerator mapGen = new MapGenerator();
+		Map testMap = mapGen.randomMap();
+		int[] playerCoordinates = mapGen.getPlayerPos();
+
 
 		JFrame gameFrame = FrameFactory.create(WINDOW_TITLE, WINDOW_WIDTH, WINDOW_HEIGHT);
 		Game game = new Game(gameFrame, testMap);
 		Keyboard keyboard = new Keyboard(game);
 		gameFrame.addKeyListener(keyboard);
 
-		game.setPlayer((Player) testMap.getMovable(2, -3));
+		game.setPlayer((Player) testMap.getMovable(playerCoordinates[0],
+				playerCoordinates[1]));
 		game.start();
->>>>>>> fbb9dc6fccd152ebc0cc912f16e84ba0314e0640
+
 	}
 
 	public void build() {

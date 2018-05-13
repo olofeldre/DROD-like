@@ -1,10 +1,8 @@
 import java.awt.*;
 import java.awt.geom.Point2D;
-<<<<<<< HEAD
 import java.util.HashSet;
-=======
 import java.util.Iterator;
->>>>>>> fbb9dc6fccd152ebc0cc912f16e84ba0314e0640
+
 import java.util.Random;
 import java.util.LinkedList;
 import java.util.ArrayList;
@@ -613,6 +611,49 @@ public class Map {
 				iterator.remove();
 			}
 		}
+	}
+
+	public int[] addMovables()
+	{
+		Random random = new Random();
+		//Adjust freely.
+		int roachNo = (width * height) / 10;
+		int roachesPlaced = 0;
+		int atY = 0;
+		int atX = 0;
+		while(roachesPlaced < roachNo)
+		{
+			atX = -(width / 2) + random.nextInt(width);
+			atY = -(height / 2) + random.nextInt(height);
+			Tile currentTile = getTile(atX, atY);
+			if (currentTile.isWall() == false &&
+					currentTile.getMovable() == null)
+			{
+				createMovable(atX, atY, MovableType.ROACH);
+				roachesPlaced ++;
+			}
+
+		}
+
+		boolean playerPlaced = false;
+		while(playerPlaced == false)
+		{
+			atX = -(width / 2) + random.nextInt(width);
+			atY = -(height / 2) + random.nextInt(height);
+			Tile currentTile = getTile(atX, atY);
+			if (currentTile.isWall() == false &&
+					currentTile.getMovable() == null)
+			{
+				createMovable(atX, atY, MovableType.PLAYER);
+				playerPlaced = true;
+			}
+
+		}
+		int[] returnArray = new int[2];
+		returnArray[0] = atX;
+		returnArray[1] = atY;
+		return returnArray;
+
 	}
 
 
