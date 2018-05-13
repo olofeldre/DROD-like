@@ -10,7 +10,7 @@ public class PlayerTest {
 
     @Before
     public void setup() {
-        map = Game.testMap();
+        map = MapGenerator.testMap();
         player = (Player) map.getTile(2, -3).getMovable();
     }
 
@@ -29,7 +29,8 @@ public class PlayerTest {
     public void rotateShouldChangeSwordPos()
 	{
 		player.rotate(Direction.RIGHT, map);
-		assertNotNull(map.getTile(3, -2).getMovable());
+		System.out.println(map.getMovable(3, -2));
+		assertNotNull(map.getTile(3, -4).getMovable());
 
 	}
 
@@ -37,7 +38,7 @@ public class PlayerTest {
 	public void RotateLeftWorksNicely()
 	{
 		player.rotate(Direction.LEFT, map);
-		assertNotNull(map.getTile(1, -2).getMovable());
+		assertNotNull(map.getTile(3, -2).getMovable());
 	}
 
 

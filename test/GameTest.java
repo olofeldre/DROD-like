@@ -16,7 +16,7 @@ public class GameTest {
     @Before
     public void setup() {
         JFrame frame = FrameFactory.create("Title", 500, 500);
-        Map map = Game.testMap();
+        Map map = MapGenerator.testMap();
         game = new Game(frame, map);
         player = (Player) map.getTile(2, -3).getMovable();
         game.setPlayer(player);

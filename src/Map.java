@@ -1,6 +1,10 @@
 import java.awt.*;
 import java.awt.geom.Point2D;
+<<<<<<< HEAD
 import java.util.HashSet;
+=======
+import java.util.Iterator;
+>>>>>>> fbb9dc6fccd152ebc0cc912f16e84ba0314e0640
 import java.util.Random;
 import java.util.LinkedList;
 import java.util.ArrayList;
@@ -563,7 +567,7 @@ public class Map {
 
 	public Movable createMovable(int x, int y, MovableType type) {
 		Tile tile = getTile(x, y);
-		Movable movable = MovableMaker.create(type, x, y);
+		Movable movable = MovableMaker.create(type, x, y, this);
 		tile.setMovable(movable);
 
 		if(type == MovableType.ROACH) {
@@ -573,13 +577,42 @@ public class Map {
 		return movable;
 	}
 
+	public Movable getMovable(int x, int y) {
+		return getTile(x, y).getMovable();
+	}
+
+	public void removeMovable(int x, int y) {
+		getTile(x, y).setMovable(null);
+	}
+
+	public void setMovable(int x, int y, Movable movable) {
+		getTile(x, y).setMovable(movable);
+	}
+
+	public void removeEnemy(Enemy enemy) {
+		enemies.remove(enemy);
+	}
+
 	public void updateEnemies(int playerX, int playerY)
 	{
 		for(Enemy enemy: enemies)
 		{
-			enemy.act(playerX, playerY, this);
+			if(enemy.isAlive()) {
+				enemy.act(playerX, playerY, this);
+			}
 		}
 
+
+		Iterator<Enemy> iterator = enemies.iterator();
+
+		while(iterator.hasNext()) {
+			Enemy e = iterator.next();
+
+			if(!e.isAlive()) {
+				removeMovable(e.x, e.y);
+				iterator.remove();
+			}
+		}
 	}
 
 

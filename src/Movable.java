@@ -7,6 +7,7 @@ public abstract class Movable {
     protected int y;
     protected boolean solid = true;
     protected Direction direction = Direction.RIGHT;
+    protected boolean alive = true;
 
     public Movable(int x, int y) {
         this.x = x;
@@ -18,6 +19,15 @@ public abstract class Movable {
     }
 
     public boolean move(Direction direction, Map map) {
+        Point newPos = getNewPosition(direction);
+
+        if(tryMoveTo(newPos.x, newPos.y, map)) {
+            return true;
+        }
+        return false;
+    }
+
+    protected Point getNewPosition(Direction direction) {
         int newX = x;
         int newY = y;
 
@@ -32,11 +42,44 @@ public abstract class Movable {
             case DOWNRIGHT: newX += 1; newY -= 1; break;
         }
 
-        if(tryMoveTo(newX, newY, map)) {
-            this.direction = direction;
-            return true;
+        return new Point(newX, newY);
+    }
+
+    private Direction getDirectionFromMovement(int x, int y) {
+        Direction direction = Direction.RIGHT;
+
+        if(x == 1) {
+            if(y == 1) {
+                direction = Direction.UPRIGHT;
+            }
+            else if(y == -1) {
+                direction = Direction.DOWNRIGHT;
+            }
+            else if(y == 0) {
+                direction = Direction.RIGHT;
+            }
         }
-        return false;
+        else if(x == -1) {
+            if(y == 1) {
+                direction = Direction.UPLEFT;
+            }
+            else if(y == -1) {
+                direction = Direction.DOWNLEFT;
+            }
+            else if(y == 0) {
+                direction = Direction.LEFT;
+            }
+        }
+        else {
+            if(y == 1) {
+                direction = Direction.UP;
+            }
+            else if(y == -1) {
+                direction = Direction.DOWN;
+            }
+        }
+
+        return direction;
     }
 
 	/**
@@ -48,19 +91,32 @@ public abstract class Movable {
 	 * @return true if move was successful.
 	 */
     public boolean tryMoveTo(int x, int y, Map map) {
+
+        this.direction = getDirectionFromMovement(x - this.x, y - this.y);
+
         if(tileFree(x, y, map) || !solid) {
-            map.getTile(this.x, this.y).removeMovable();
-            this.x = x;
-            this.y = y;
-            map.getTile(x, y).setMovable(this);
+            setPosition(x, y, map);
             return true;
         }
 
         return false;
     }
 
-    private boolean tileFree(int x, int y, Map map) {
-        if (map.getTile(x, y).isWall() || map.getTile(x, y).getMovable() != null)
+    public void setPosition(int x, int y, Map map) {
+        Movable movable = map.getMovable(this.x, this.y);
+
+        if(movable == this) {
+            map.removeMovable(this.x, this.y);
+        }
+
+        this.x = x;
+        this.y = y;
+
+        map.setMovable(x, y, this);
+    }
+
+    protected boolean tileFree(int x, int y, Map map) {
+        if (map.getTile(x, y).isWall() || map.getMovable(x, y) != null)
         {
             return false;
         }

@@ -334,9 +334,6 @@ public class MapTest {
     	map.createMovable(10, 10, MovableType.PLAYER);
     	Tile tile = map.getTile(10 ,10);
     	Movable movable = tile.getMovable();
-
-    	System.out.println(movable);
-
     	assertThat(movable.getType(), equalTo(MovableType.PLAYER));
 	}
 
@@ -345,9 +342,6 @@ public class MapTest {
 		map.createMovable(8, 8, MovableType.ROACH);
 		Tile tile = map.getTile(8 ,8);
 		Movable movable = tile.getMovable();
-
-		System.out.println(movable);
-
 		assertThat(movable.getType(), equalTo(MovableType.ROACH));
 	}
 
@@ -355,7 +349,7 @@ public class MapTest {
 	public void updateMovablesWorksInTestMap()
 	{
 		//Arrange
-		Map test = Game.testMap();
+		Map test = MapGenerator.testMap();
 
 		//Act
 		test.updateEnemies(2, -3);
