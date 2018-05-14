@@ -613,6 +613,7 @@ public class Map {
 		}
 	}
 
+	
 	public int[] addMovables()
 	{
 		Random random = new Random();
