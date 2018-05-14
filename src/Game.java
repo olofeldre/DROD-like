@@ -11,6 +11,7 @@ public class Game extends JPanel {
 	public static final String WINDOW_TITLE = "Rogue";
 	private static final Font smallText = new Font("arial", Font.PLAIN, 25);
 	private static final Font largeText = new Font("arial", Font.PLAIN, 50);
+	private static final Font tinyText = new Font("arial", Font.PLAIN, 15);
 	private MapGenerator mapGenerator;
 
 	private int mapsCompleted = 0;
@@ -85,7 +86,7 @@ public class Game extends JPanel {
 			map.draw(g, getWidth(), getHeight());
 
 			g.setColor(Color.WHITE);
-			g.setFont(smallText);
+			g.setFont(tinyText);
 
 			g.drawString("Maps completed: " + mapsCompleted + ", " + " Roaches killed: " + player.getRoachesKilled(), 20, 20);
 		}
