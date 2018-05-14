@@ -617,7 +617,7 @@ public class Map {
 	{
 		Random random = new Random();
 		//Adjust freely.
-		int roachNo = (width * height) / 10;
+		int roachNo = (width * height) / 40;
 		int roachesPlaced = 0;
 		int atY = 0;
 		int atX = 0;
