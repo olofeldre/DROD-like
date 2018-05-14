@@ -619,7 +619,7 @@ public class Map {
 	{
 		Random random = new Random();
 		//Adjust freely.
-		int roachNo = (width * height) / 40;
+		int roachNo = ((width * height) - 64) / 40;
 		int roachesPlaced = 0;
 		int atY = 0;
 		int atX = 0;
@@ -628,6 +628,12 @@ public class Map {
 			atX = -(width / 2) + random.nextInt(width);
 			atY = -(height / 2) + random.nextInt(height);
 			Tile currentTile = getTile(atX, atY);
+			// To close to player!
+			if (atX > -(width / 2) + width - 8 &&
+					atY < -(width / 2) + 8)
+			{
+				continue;
+			}
 			if (currentTile.isWall() == false &&
 					currentTile.getMovable() == null)
 			{
@@ -640,8 +646,9 @@ public class Map {
 		boolean playerPlaced = false;
 		while(playerPlaced == false)
 		{
-			atX = -(width / 2) + random.nextInt(width);
-			atY = -(height / 2) + random.nextInt(height);
+			//place player in lower right corner.
+			atX = (width / 4) + random.nextInt(width / 4);
+			atY = -(height / 2) + random.nextInt(height / 4);
 			Tile currentTile = getTile(atX, atY);
 			if (currentTile.isWall() == false &&
 					currentTile.getMovable() == null)

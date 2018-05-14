@@ -26,7 +26,7 @@ public class MapGenerator {
 
     public Map randomMap()
 	{
-		Map map = new Map(20, 20);
+		Map map = new Map(30, 30);
 		map.partition();
 		playerPos = map.addMovables();
 
