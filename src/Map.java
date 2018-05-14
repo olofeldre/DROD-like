@@ -20,6 +20,7 @@ public class Map {
 	private Random random;
 	private LinkedList<Enemy> enemies;
 	private ArrayList<Wall> walls;
+
 	/**
      * Construct the map by initializing the tile matrix of size width * height
      * that stores all information on the map.
@@ -618,7 +619,7 @@ public class Map {
 	{
 		Random random = new Random();
 		//Adjust freely.
-		int roachNo = (width * height) / 10;
+		int roachNo = (width * height) / 40;
 		int roachesPlaced = 0;
 		int atY = 0;
 		int atX = 0;
@@ -657,6 +658,10 @@ public class Map {
 
 	}
 
+
+	public int getNumberOfEnemies() {
+		return enemies.size();
+	}
 
 
 }

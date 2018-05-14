@@ -10,6 +10,7 @@ public class Player extends Movable {
 	private int angle = 0;
 	private Sword sword;
 	private Point relativeSwordPos;
+	private int roachesKilled = 0;
 
     public Player(int x, int y, Map map)
 	{
@@ -18,6 +19,10 @@ public class Player extends Movable {
 		this.direction = Direction.UP;
 		sword = (Sword) map.createMovable(x + 1, y, MovableType.SWORD);
 		relativeSwordPos = new Point(1, 0);
+	}
+
+	public int getRoachesKilled() {
+    	return roachesKilled;
 	}
 
 
@@ -38,6 +43,7 @@ public class Player extends Movable {
 			if(movable != null && movable.type == MovableType.ROACH) {
 				Enemy enemy = (Enemy) movable;
 				enemy.kill();
+				roachesKilled++;
 				map.removeEnemy(enemy);
 			}
 
@@ -76,6 +82,7 @@ public class Player extends Movable {
 		if(previous != null && previous.type == MovableType.ROACH) {
 			Enemy enemy = (Enemy)previous;
 			enemy.kill();
+			roachesKilled++;
 			map.removeEnemy(enemy);
 		}
 

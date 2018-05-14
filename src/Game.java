@@ -11,6 +11,9 @@ public class Game extends JPanel {
 	public static final String WINDOW_TITLE = "Rogue";
 	private static final Font smallText = new Font("arial", Font.PLAIN, 25);
 	private static final Font largeText = new Font("arial", Font.PLAIN, 50);
+	private MapGenerator mapGenerator;
+
+	private int mapsCompleted = 0;
 
 	private JFrame frame;
 	private Map map;
@@ -18,21 +21,6 @@ public class Game extends JPanel {
 
     public static void main(String[] args)
 	{
-
-		Map map = new Map(50, 50);
-		map.partition();
-
-		//JFrame gameFrame = FrameFactory.create(WINDOW_TITLE, WINDOW_WIDTH, WINDOW_HEIGHT);
-		//Game game = new Game(gameFrame, map);
-		//Keyboard keyboard = new Keyboard(game);
-		//gameFrame.addKeyListener(keyboard);
-
-		//game.setPlayer((Player) map.getTile(2, -3).getMovable());
-		//game.start();
-		System.out.println(map);
-
-
-		//Map testMap = MapGenerator.testMap();
 		MapGenerator mapGen = new MapGenerator();
 		Map testMap = mapGen.randomMap();
 		int[] playerCoordinates = mapGen.getPlayerPos();
@@ -50,8 +38,10 @@ public class Game extends JPanel {
 	}
 
 	public void build() {
-    	map = MapGenerator.testMap();
-		setPlayer((Player) map.getMovable(2, -3));
+    	map = mapGenerator.randomMap();
+    	int[] playerCoordinates = mapGenerator.getPlayerPos();
+
+    	setPlayer((Player) map.getMovable(playerCoordinates[0], playerCoordinates[1]));
 	}
 
 	/**
@@ -63,6 +53,8 @@ public class Game extends JPanel {
 	{
 		this.frame = frame;
 		this.map = map;
+
+		mapGenerator = new MapGenerator();
 		frame.add(this);
 
 		loadResources();
@@ -91,6 +83,11 @@ public class Game extends JPanel {
 	{
 		if(player.alive) {
 			map.draw(g, getWidth(), getHeight());
+
+			g.setColor(Color.WHITE);
+			g.setFont(smallText);
+
+			g.drawString("Maps completed: " + mapsCompleted + ", " + " Roaches killed: " + player.getRoachesKilled(), 20, 20);
 		}
 		else {
 			g.setColor(Color.BLACK);
@@ -146,6 +143,11 @@ public class Game extends JPanel {
 
 		if(update) {
 			map.updateEnemies(player.x, player.y);
+		}
+
+		if(map.getNumberOfEnemies() == 0) {
+			mapsCompleted++;
+			build();
 		}
 
 		repaint();
