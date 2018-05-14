@@ -13,6 +13,8 @@ public class Game extends JPanel {
 	private static final Font largeText = new Font("arial", Font.PLAIN, 50);
 	private MapGenerator mapGenerator;
 
+	private int mapsCompleted = 0;
+
 	private JFrame frame;
 	private Map map;
 	private Player player;
@@ -81,6 +83,11 @@ public class Game extends JPanel {
 	{
 		if(player.alive) {
 			map.draw(g, getWidth(), getHeight());
+
+			g.setColor(Color.WHITE);
+			g.setFont(smallText);
+
+			g.drawString("Maps completed: " + mapsCompleted + ", " + " Roaches killed: " + player.getRoachesKilled(), 20, 20);
 		}
 		else {
 			g.setColor(Color.BLACK);
@@ -136,6 +143,11 @@ public class Game extends JPanel {
 
 		if(update) {
 			map.updateEnemies(player.x, player.y);
+		}
+
+		if(map.getNumberOfEnemies() == 0) {
+			mapsCompleted++;
+			build();
 		}
 
 		repaint();

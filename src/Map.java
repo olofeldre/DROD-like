@@ -20,6 +20,7 @@ public class Map {
 	private Random random;
 	private LinkedList<Enemy> enemies;
 	private ArrayList<Wall> walls;
+
 	/**
      * Construct the map by initializing the tile matrix of size width * height
      * that stores all information on the map.
@@ -656,6 +657,10 @@ public class Map {
 
 	}
 
+
+	public int getNumberOfEnemies() {
+		return enemies.size();
+	}
 
 
 }
