@@ -22,7 +22,13 @@ And q, w to rotate the sword counter-clockwise and clockwise.
     
 ## How do i install and use the project?
   
-No installation is required, simply compile the classes and run the Game class.
+Run this code from the root directory of the project:
+
+```
+javac src/*.java
+
+java -classpath "./src" Game
+```
     
 ## What libraries, frameworks or methods are you using?
 
