@@ -26,7 +26,6 @@ Run this code from the root directory of the project:
 
 ```
 javac src/*.java
-
 java -classpath "./src" Game
 ```
     
