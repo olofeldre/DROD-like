@@ -32,7 +32,7 @@ public class MapGenerator {
 
 		return map;
 	}
-
+    
 	public int[] getPlayerPos()
 	{
 		return playerPos;
