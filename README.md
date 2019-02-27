@@ -1,3 +1,6 @@
+This was a school project by me (Olof Gren) and Fredrik Svahn for the course
+DD1349 Projektuppgift i introduktion till datalogi.
+
 # Project Description
 
 ## What is the project about?
